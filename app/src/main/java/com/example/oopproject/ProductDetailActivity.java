@@ -31,6 +31,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
+        // Show the Up button in the action bar.
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +44,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
-        // Show the Up button in the action bar.
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
@@ -56,16 +58,13 @@ public class ProductDetailActivity extends AppCompatActivity {
         // http://developer.android.com/guide/components/fragments.html
         //
         if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
+            /* Vengono prelevati i dati dall'activity chiamante (dati: ARG_ITEM_ID e prodotto.id e viene mappato un bundle. Si crea poi
+            * un fragment che viene "disegnato" così come è stato mappato il bundle. */
             Bundle arguments = new Bundle();
-            arguments.putString(ProductDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ProductDetailFragment.ARG_ITEM_ID));
+            arguments.putString(ProductDetailFragment.ARG_ITEM_ID.toString(), getIntent().getStringExtra(ProductDetailFragment.ARG_ITEM_ID.toString()));
             ProductDetailFragment fragment = new ProductDetailFragment();
             fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.product_detail_container, fragment)
-                    .commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.product_detail_container, fragment).commit();
         }
     }
 

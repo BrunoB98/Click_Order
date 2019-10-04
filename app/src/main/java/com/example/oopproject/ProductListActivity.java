@@ -9,15 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.oopproject.dummy.DummyContent;
+import com.example.oopproject.Dummy.*;
+import com.example.oopproject.Ingredient;
 
 import java.util.List;
 
@@ -36,6 +34,7 @@ public class ProductListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    DummyContent cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +44,8 @@ public class ProductListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
+        cont = new DummyContent();
+
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,7 @@ public class ProductListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-
+        /* funzione che cambia la visualizzazione in base alla grandezza del tablet */
         if (findViewById(R.id.product_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -67,24 +68,34 @@ public class ProductListActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
-
+    /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, cont.ITEMS, mTwoPane));
     }
 
+    /* Nested static class to manage the RecyclerView */
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ProductListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<Product> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+                Product prod = (Product) view.getTag();
+                /* si verifica se lo schermo è abbastanza grande oppure no.
+                Se nTwoPane è vero (schermo grande) allora
+
+                Se nTwoPane è falso (schermo normale) allora passa all'activity ProductDetailActivity mandandogli,  tramite un Intent ,
+                 una stringa prelevata dal Fragment ProductDetailFragment e un seriale.
+                All'activity ProductDetailActivity vengono mandati ARG_ITEM_ID (definito nel fragment) e l'id del prodotto
+                  In sostanza quando avviene un click su un prodotto
+                 si passa all'activity che mostra i dettagli di quel prodotto.
+                 */
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(ProductDetailFragment.ARG_ITEM_ID, item.id);
+                    arguments.putString(ProductDetailFragment.ARG_ITEM_ID.toString(), prod.name);
                     ProductDetailFragment fragment = new ProductDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -93,7 +104,7 @@ public class ProductListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ProductDetailActivity.class);
-                    intent.putExtra(ProductDetailFragment.ARG_ITEM_ID, item.id);
+                    intent.putExtra(ProductDetailFragment.ARG_ITEM_ID.toString(), prod.name);
 
                     context.startActivity(intent);
                 }
@@ -101,7 +112,7 @@ public class ProductListActivity extends AppCompatActivity {
         };
 
         SimpleItemRecyclerViewAdapter(ProductListActivity parent,
-                                      List<DummyContent.DummyItem> items,
+                                      List<Product> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -117,8 +128,8 @@ public class ProductListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mIdView.setText(mValues.get(position).id.toString());
+            holder.mContentView.setText(mValues.get(position).name);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
