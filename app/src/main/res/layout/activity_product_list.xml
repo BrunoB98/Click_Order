@@ -9,6 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -19,6 +20,16 @@
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ABE2B2"
+            android:onClick="ShowOrder"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:text="Riepilogo Ordine"
+            android:textColor="@android:color/black" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
@@ -27,7 +38,11 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/product_list" />
+        <include
+            layout="@layout/product_list"
+            android:layout_height="534dp"
+            />
+
     </FrameLayout>
 
 

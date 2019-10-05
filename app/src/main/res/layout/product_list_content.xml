@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ProductListActivity"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/id_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="0.75"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
+        android:id="@+id/prod_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="0.5"
         android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:inputType="number"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <Button
+        android:id="@+id/Add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.65"
+        android:onClick="AddToOrder"
+        android:text="ADD"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/Modify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.65"
+        android:text="MODIFY"
+        android:textSize="11sp" />
 
 </LinearLayout>

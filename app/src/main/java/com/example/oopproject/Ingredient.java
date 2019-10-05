@@ -11,10 +11,7 @@ public class Ingredient implements Comparable<Ingredient> {
 
     @Override
     public String toString() {
-        return "Ingredient{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return  name;
     }
 
     @Override

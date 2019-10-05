@@ -16,6 +16,8 @@ import androidx.core.app.NavUtils;
 
 import android.view.MenuItem;
 
+import static android.content.Intent.parseUri;
+
 /**
  * An activity representing a single Product detail screen. This
  * activity is only used on narrow width devices. On tablet-size devices,
@@ -36,16 +38,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
 
 
         // savedInstanceState is non-null when there is fragment state
@@ -61,7 +53,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             /* Vengono prelevati i dati dall'activity chiamante (dati: ARG_ITEM_ID e prodotto.id e viene mappato un bundle. Si crea poi
             * un fragment che viene "disegnato" così come è stato mappato il bundle. */
             Bundle arguments = new Bundle();
-            arguments.putString(ProductDetailFragment.ARG_ITEM_ID.toString(), getIntent().getStringExtra(ProductDetailFragment.ARG_ITEM_ID.toString()));
+            arguments.putInt(ProductDetailFragment.ARG_ITEM_ID, getIntent().getExtras().getInt(ProductDetailFragment.ARG_ITEM_ID));
             ProductDetailFragment fragment = new ProductDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction().add(R.id.product_detail_container, fragment).commit();

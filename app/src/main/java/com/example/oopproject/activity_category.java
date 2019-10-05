@@ -1,33 +1,35 @@
 package com.example.oopproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+import android.widget.Button;
 
 public class activity_category extends AppCompatActivity {
-
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        button = findViewById(R.id.cat);
+        button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
+        button = findViewById(R.id.cat1);
+        button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
+        button = findViewById(R.id.cat2);
+        button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
+        button = findViewById(R.id.cat3);
+        button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
+        button = findViewById(R.id.cat4);
+        button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
+        button = findViewById(R.id.cat5);
+        button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
     }
 
-    public void AddNew(View view) {
+    public void SelectCategory(View view) {
         /* Si effettua una valutazione della funzione per capire se si sta eseguendo un nuovo ordine, registrando un nuovo prodotto, ecc...*/
         Bundle bundle = getIntent().getExtras();
         int funzione = bundle.getInt("view");
@@ -36,7 +38,7 @@ public class activity_category extends AppCompatActivity {
             case R.id.new_order:
                 i = new Intent(this, ProductListActivity.class);
                 break;
-            case R.id.new_product:
+            case R.id.manage_product:
                 i = new Intent(this, ProductListActivity.class);
                 break;
             case R.id.later_p:

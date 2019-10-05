@@ -9,13 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.oopproject.Dummy.*;
-import com.example.oopproject.Ingredient;
 
 import java.util.List;
 
@@ -28,11 +30,6 @@ import java.util.List;
  * item details side-by-side using two vertical panes.
  */
 public class ProductListActivity extends AppCompatActivity {
-
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private boolean mTwoPane;
     DummyContent cont;
 
@@ -40,12 +37,10 @@ public class ProductListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
         cont = new DummyContent();
-
 /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +63,16 @@ public class ProductListActivity extends AppCompatActivity {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
+
+    public void AddToOrder(View view) {
+        Toast.makeText(getApplicationContext(), "Added to order", Toast.LENGTH_SHORT).show();
+    }
+
+    public void ShowOrder(View view) {
+        Intent i = new Intent(this, activity_order.class);
+        startActivity(i);
+    }
+
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, cont.ITEMS, mTwoPane));
@@ -95,7 +100,7 @@ public class ProductListActivity extends AppCompatActivity {
                  */
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(ProductDetailFragment.ARG_ITEM_ID.toString(), prod.name);
+                    arguments.putInt(ProductDetailFragment.ARG_ITEM_ID, prod.id);
                     ProductDetailFragment fragment = new ProductDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -104,8 +109,7 @@ public class ProductListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ProductDetailActivity.class);
-                    intent.putExtra(ProductDetailFragment.ARG_ITEM_ID.toString(), prod.name);
-
+                    intent.putExtra(ProductDetailFragment.ARG_ITEM_ID, prod.id);
                     context.startActivity(intent);
                 }
             }
@@ -128,8 +132,10 @@ public class ProductListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id.toString());
-            holder.mContentView.setText(mValues.get(position).name);
+            Product p = mValues.get(position);
+            holder.mIdView.setText(p.getId().toString());
+            holder.mContentView.setText(p.getName());
+            holder.mPriceView.setText(p.getPrice().toString() + "$");
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -143,11 +149,16 @@ public class ProductListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
             final TextView mContentView;
+            final TextView mPriceView;
+
+
 
             ViewHolder(View view) {
                 super(view);
+
                 mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mContentView = (TextView) view.findViewById(R.id.prod_name);
+                mPriceView = (TextView) view.findViewById(R.id.price);
             }
         }
     }

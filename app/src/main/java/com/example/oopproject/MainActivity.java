@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        System.out.println("Vaffanculo");
     }
 
     @Override
@@ -83,9 +82,7 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_view) {
 
         } else if (id == R.id.nav_share) {
 
@@ -98,8 +95,15 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     /* Si passa all'activity di categoria prodotti indicando quale bottono è stato toccato*/
-    public void SelectCategory(View view) {
-        Intent i = new Intent(this, activity_category.class);
+    public void SelectOperation(View view) {
+        Intent i;
+        switch (view.getId()) {
+            case R.id.manage_product:
+                i = new Intent(this, activity_manage_product.class);
+                break;
+            default:
+                i = new Intent(this, activity_category.class);
+        }
         i.putExtra("view", view.getId());
         startActivity(i);
 
