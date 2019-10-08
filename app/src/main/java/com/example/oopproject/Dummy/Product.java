@@ -1,27 +1,27 @@
 package com.example.oopproject.Dummy;
 
-import com.example.oopproject.Ingredient;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Product implements Comparable<Product> {
     public Integer id;
     public String name;
     public Float price;
+    public String category;
     public List<Ingredient> ingredients;
 
-    public Product(Integer id, String name, Float price) {
+    public Product(Integer id, String name, Float price, String category) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
     }
 
-    public Product(int id, String name, float price, List<String> strings) {
+    public Product(int id, String name, float price, String category, List<String> strings) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
         this.ingredients = new ArrayList<Ingredient>();
         int position=0;
         for (String s : strings) {
@@ -42,6 +42,7 @@ public class Product implements Comparable<Product> {
         return price;
     }
 
+
     public String printIngredients() {
         return "Ingredienti: " + ingredients;
     }
@@ -52,6 +53,7 @@ public class Product implements Comparable<Product> {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", category=" + category +
                 ", ingredients=" + ingredients +
                 '}';
     }

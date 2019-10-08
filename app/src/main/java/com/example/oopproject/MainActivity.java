@@ -1,10 +1,13 @@
 package com.example.oopproject;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.oopproject.Database.DBManager;
+import com.example.oopproject.Dummy.DummyContent;
+import com.example.oopproject.ManageProduct.activity_manage_product;
 
 import android.view.View;
 
@@ -21,6 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

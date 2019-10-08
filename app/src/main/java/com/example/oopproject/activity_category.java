@@ -15,17 +15,17 @@ public class activity_category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         DisplayMetrics dm = getResources().getDisplayMetrics();
-        button = findViewById(R.id.cat);
+        button = findViewById(R.id.antipasti);
         button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
-        button = findViewById(R.id.cat1);
+        button = findViewById(R.id.primi);
         button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
-        button = findViewById(R.id.cat2);
+        button = findViewById(R.id.secondi);
         button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
-        button = findViewById(R.id.cat3);
+        button = findViewById(R.id.pizze);
         button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
-        button = findViewById(R.id.cat4);
+        button = findViewById(R.id.dolci);
         button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
-        button = findViewById(R.id.cat5);
+        button = findViewById(R.id.bevande);
         button.setTextSize((float) (dm.widthPixels*0.06/dm.density));
     }
 
@@ -39,10 +39,10 @@ public class activity_category extends AppCompatActivity {
                 i = new Intent(this, ProductListActivity.class);
                 break;
             case R.id.manage_product:
-                i = new Intent(this, ProductListActivity.class);
+                i = new Intent(this, MainActivity.class);
                 break;
             case R.id.later_p:
-                i = new Intent(this, ProductListActivity.class);
+                i = new Intent(this, activity_order.class);
                 break;
             case R.id.delivery:
                 i = new Intent(this, ProductListActivity.class);

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.oopproject.Dummy.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +32,6 @@ import java.util.List;
  */
 public class ProductListActivity extends AppCompatActivity {
     private boolean mTwoPane;
-    DummyContent cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +40,7 @@ public class ProductListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
-        cont = new DummyContent();
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
         /* funzione che cambia la visualizzazione in base alla grandezza del tablet */
         if (findViewById(R.id.product_detail_container) != null) {
             // The detail container view will be present only in the
@@ -75,7 +66,38 @@ public class ProductListActivity extends AppCompatActivity {
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, cont.ITEMS, mTwoPane));
+        Bundle bundle = getIntent().getExtras();
+        List<Product> l = new ArrayList<Product>();
+        String str;
+        switch (bundle.getInt("categoria")) {
+            case R.id.antipasti:
+                str = "antipasti";
+                break;
+            case R.id.primi:
+                str = "primi";
+                break;
+            case R.id.secondi:
+                str = "secondi";
+                break;
+            case R.id.pizze:
+                str = "pizze";
+                break;
+            case R.id.bevande:
+                str = "bevande";
+                break;
+            case R.id.dolci:
+                str = "dolci";
+                break;
+                default:
+                    str = "null";
+        }
+
+        for (Product pr : LogActivity.ITEMS) {
+            if (pr.category.equals(str)) {
+                l.add(pr);
+            }
+        }
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, l, mTwoPane));
     }
 
     /* Nested static class to manage the RecyclerView */
@@ -133,12 +155,11 @@ public class ProductListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             Product p = mValues.get(position);
-            holder.mIdView.setText(p.getId().toString());
             holder.mContentView.setText(p.getName());
             holder.mPriceView.setText(p.getPrice().toString() + "$");
-
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
+
         }
 
         @Override
@@ -147,7 +168,6 @@ public class ProductListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mIdView;
             final TextView mContentView;
             final TextView mPriceView;
 
@@ -155,8 +175,6 @@ public class ProductListActivity extends AppCompatActivity {
 
             ViewHolder(View view) {
                 super(view);
-
-                mIdView = (TextView) view.findViewById(R.id.id_text);
                 mContentView = (TextView) view.findViewById(R.id.prod_name);
                 mPriceView = (TextView) view.findViewById(R.id.price);
             }

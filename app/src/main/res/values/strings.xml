@@ -15,4 +15,15 @@
     <string name="menu_send">Send</string>
     <string name="title_product_list">Products</string>
     <string name="title_product_detail">Product Detail</string>
+    <string name="delete_product">DELETE PRODUCT</string>
+    <string name="view_product">VIEW PRODUCTS</string>
+    <string name="modify_product">MODIFY PRODUCT</string>
+    <string name="add_new_product">ADD NEW PRODUCT</string>
+    <string name="title_activity_boh">boh</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

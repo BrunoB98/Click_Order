@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.48" />
 
     <Button
-        android:id="@+id/cat5"
+        android:id="@+id/bevande"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -47,10 +47,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toBottomOf="@+id/cat3" />
+        app:layout_constraintTop_toBottomOf="@+id/pizze" />
 
     <Button
-        android:id="@+id/cat4"
+        android:id="@+id/dolci"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -73,10 +73,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/cat2" />
+        app:layout_constraintTop_toBottomOf="@+id/secondi" />
 
     <Button
-        android:id="@+id/cat3"
+        android:id="@+id/pizze"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -94,14 +94,14 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/cat5"
+        app:layout_constraintBottom_toTopOf="@+id/bevande"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toBottomOf="@+id/cat1" />
+        app:layout_constraintTop_toBottomOf="@+id/primi" />
 
     <Button
-        android:id="@+id/cat2"
+        android:id="@+id/secondi"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -119,14 +119,14 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/cat4"
+        app:layout_constraintBottom_toTopOf="@+id/dolci"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/cat" />
+        app:layout_constraintTop_toBottomOf="@+id/antipasti" />
 
     <Button
-        android:id="@+id/cat"
+        android:id="@+id/antipasti"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -144,14 +144,14 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/cat2"
+        app:layout_constraintBottom_toTopOf="@+id/secondi"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/cat1"
+        android:id="@+id/primi"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -169,7 +169,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/cat3"
+        app:layout_constraintBottom_toTopOf="@+id/pizze"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"

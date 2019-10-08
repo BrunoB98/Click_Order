@@ -1,4 +1,4 @@
-package com.example.oopproject;
+package com.example.oopproject.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -53,16 +53,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(DB_ORDINE);
             db.execSQL(DB_PRODOTTO);
             db.execSQL(DB_DI);
-            ContentValues c = new ContentValues();
-            /* tutte le insert */
-            c.put("nomep", "Margherita");
-            c.put("prezzo", "6.00");
-            c.put("nomec", "pizze");
-            db.insert(PRODOTTO, null, c);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+           /* ContentValues c = new ContentValues();
+
+            c.put("nomep", "Margherita");
+            c.put("prezzo", "6.00");
+            c.put("nomec", "pizze");
+            db.insert(PRODOTTO, null, c);*/
     }
 
     @Override

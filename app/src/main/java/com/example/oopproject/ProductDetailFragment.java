@@ -3,24 +3,18 @@ package com.example.oopproject;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.oopproject.Dummy.DummyContent;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.oopproject.*;
 
 import com.example.oopproject.Dummy.*;
-import com.example.oopproject.Ingredient;
 
-import static com.example.oopproject.Dummy.DummyContent.ITEM_MAP;
+
 
 /**
  * A fragment representing a single Product detail screen.
@@ -56,8 +50,7 @@ public class ProductDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = ITEM_MAP.get(getArguments().getInt(ARG_ITEM_ID));
-            System.out.println(mItem.toString());//
+            mItem = LogActivity.ITEM_MAP.get(getArguments().getInt(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

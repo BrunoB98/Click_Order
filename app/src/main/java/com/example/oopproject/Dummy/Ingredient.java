@@ -1,4 +1,4 @@
-package com.example.oopproject;
+package com.example.oopproject.Dummy;
 
 public class Ingredient implements Comparable<Ingredient> {
         public int id;

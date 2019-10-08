@@ -1,13 +1,12 @@
-package com.example.oopproject;
+package com.example.oopproject.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CursorAdapter;
-import android.widget.ListView;
+
+import com.example.oopproject.Database.DatabaseHelper;
 
 import java.util.ArrayList;
 
@@ -45,11 +44,24 @@ public class DBManager {
 
     }
 
+    public DBManager open() throws SQLException {
+        db = DBHelper.getReadableDatabase();
+        db = DBHelper.getWritableDatabase();
+        return this;
+    }
 
+    public void close() {
+        DBHelper.close();
+    }
 
     public Cursor viewProducts(String category) {
         String s = "SELECT * FROM prodotto WHERE prodotto.nomec = " + category;
         Cursor c = db.rawQuery(s, null);
+        return c;
+    }
+
+    public Cursor viewIngredients() {
+        Cursor c = db.rawQuery("SELECT * FROM ingrediente", null);
         return c;
     }
 
@@ -58,12 +70,17 @@ public class DBManager {
         return c;
     }
 
-    public void addProduct(String productName, float price, String categoryName, ArrayList<String> ingredients) {
+    public void add(String name, float price, String category) {
+        db.execSQL("INSERT INTO prodotto (nomep, prezzo, nomec) values (name, price, category)");
+    }
+
+    public void addProduct(String productName, float price, String categoryName) {
         ContentValues cv = new ContentValues();
         cv.put("nomep" , productName);
         cv.put("prezzo", price);
         cv.put("nomec", categoryName);
         db.insert(PRODOTTO, null, cv);
+        /*
         Cursor c_idp = db.rawQuery("SELECT idp FROM prodotto WHERE nomep = " + productName, null);
         int idIndex = c_idp.getColumnIndex("idp");
         int id = c_idp.getInt(idIndex);
@@ -77,6 +94,7 @@ public class DBManager {
             c_cont.put("idi", id_ing );
             db.insert(CONTIENE, null, c_cont );
         }
+        */
 
     }
 
@@ -125,6 +143,14 @@ public class DBManager {
 
     public void deleteIngredient(int ingredientId, String ingredientName) {
         db.delete(INGREDIENTE, "nomei = '"+ ingredientName +"'", null);
+    }
+
+    public void deleteAllRecords() {
+        db.execSQL("DELETE FROM di");
+        db.execSQL("DELETE FROM contiene");
+        db.execSQL("DELETE FROM ingrediente");
+        db.execSQL("DELETE FROM prodotto");
+        db.execSQL("DELETE FROM ordine");
     }
 
 
