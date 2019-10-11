@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatProject
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        System.out.println("ciao sono l'activity main nel metodo on create");
         dbManager = new DBManager(this);
         dbManager.open();
-        LP = dbManager.init();
+        COUNT = ITEMS.size();
+        dbManager.update();
     }
 
     @Override

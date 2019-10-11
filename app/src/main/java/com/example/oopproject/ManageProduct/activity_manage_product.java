@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.oopproject.MainActivity;
 import com.example.oopproject.R;
 
 public class activity_manage_product extends AppCompatActivity {
@@ -19,13 +21,18 @@ public class activity_manage_product extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed () {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+
     public void setFragment(View view) {
        // fragment = new AddFragment();
 
         switch(view.getId()) {
             case R.id.Add_button:
-                fragment = new AddFragment();
-                fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
+                startActivity(new Intent(this, Add_product_activity.class));
                 break;
                 case R.id.Modify_button:
                 fragment = new ModifyFragment();

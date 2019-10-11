@@ -22,7 +22,7 @@ import com.example.oopproject.Dummy.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.oopproject.MainActivity.LP;
+
 
 
 /**
@@ -95,7 +95,7 @@ public class ProductListActivity extends AppCompatProject {
                     str = "null";
         }
 
-        for (Product pr : LP) {
+        for (Product pr : ITEMS) {
             if (pr.category.equals(str)) {
                 l.add(pr);
             }

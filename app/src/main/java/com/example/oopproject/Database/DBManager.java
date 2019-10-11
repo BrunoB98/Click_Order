@@ -60,29 +60,23 @@ public class DBManager {
         DBHelper.close();
     }
 
-    public List<Product> init() {
-        this.deleteAllRecords();
-        System.out.println("ho cancellato i record");
-        this.add("piselli", (float) 7.3, "primi");
-        this.add("bistecca", (float) 7.3, "secondi");
-        this.add("ceci", (float) 7.3, "secondi");
-        System.out.println("ho aggiunto i prodotti");
+    public void update() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
         c = this.viewAllProducts();
-        System.out.println("ho visualizzato i prodotti");
-       // COUNT = c.getCount();
         int idIndex = c.getColumnIndex("idp");
         int nomepIndex = c.getColumnIndex("nomep");
         int prezzoIndex = c.getColumnIndex("prezzo");
         int nomecIndex = c.getColumnIndex("nomec");
 
-        c.moveToFirst();
+        //c.moveToFirst();
         // Add some sample items.
-        do {
+        while (c.moveToNext()) {
             Product p = new Product(c.getInt(idIndex), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
             ITEMS.add(p);
             ITEM_MAP.put(p.id, p);
-        } while (c.moveToNext());
-        return ITEMS;
+        }
+        return;
     }
 
     public Cursor viewProducts(String category) {
