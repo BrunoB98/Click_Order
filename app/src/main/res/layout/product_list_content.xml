@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.65"
-        android:onClick="AddToOrder"
+        android:clickable="true"
         android:text="ADD"
         android:textSize="11sp" />
 

@@ -2,19 +2,36 @@ package com.example.oopproject;
 
 import com.example.oopproject.Dummy.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    public List<Product> order;
+    public List<Product> list;
+    public Double total;
 
-    public Order(List<Product> order) {
-        this.order = order;
+    public Order() {
+        list = new ArrayList<Product>();
+        total = 0.0;
+
     }
 
-    public void PrintOrder(Order o) {
+    public Order(List<Product> list) {
+        this.list = list;
+    }
+
+    public StringBuilder PrintOrder() {
+        StringBuilder sb = new StringBuilder();
+        for(Product p : list) {
+            sb.append(p.name + '\t' + p.price);
+            sb.append((" "));
+        }
+        return sb;
     }
 
     public void add(Product product) {
-        order.add(product);
+        list.add(product);
+        total += product.price;
     }
+
+
 }

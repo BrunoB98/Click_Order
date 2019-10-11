@@ -14,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.oopproject.Dummy.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,8 @@ import java.util.List;
  */
 public class ProductListActivity extends AppCompatProject {
     private boolean mTwoPane;
-
+    protected static List<Product> l;
+    protected static Order o;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,7 @@ public class ProductListActivity extends AppCompatProject {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
-
+        o = new Order();
         /* funzione che cambia la visualizzazione in base alla grandezza del tablet */
         if (findViewById(R.id.product_detail_container) != null) {
             // The detail container view will be present only in the
@@ -58,19 +61,18 @@ public class ProductListActivity extends AppCompatProject {
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
-    public void AddToOrder(View view) {
-        Toast.makeText(getApplicationContext(), "Added to order", Toast.LENGTH_SHORT).show();
-    }
-
     public void ShowOrder(View view) {
-        Intent i = new Intent(this, activity_order.class);
-        startActivity(i);
+       /* Intent i = new Intent(this, activity_order.class);
+        i.putExtra("ordine", (Serializable) o);
+        startActivity(i);*/
+        Toast.makeText(view.getContext(), o.PrintOrder().toString(), Toast.LENGTH_LONG).show();
+
     }
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         Bundle bundle = getIntent().getExtras();
-        List<Product> l = new ArrayList<Product>();
+        l = new ArrayList<Product>();
         String str;
         switch (bundle.getInt("categoria")) {
             case R.id.antipasti:
@@ -110,6 +112,15 @@ public class ProductListActivity extends AppCompatProject {
         private final ProductListActivity mParentActivity;
         private final List<Product> mValues;
         private final boolean mTwoPane;
+
+        private final View.OnClickListener aggiungi = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(view.getTag().toString());
+                o.add(l.get((int)view.getTag()));
+                Toast.makeText(view.getContext(), "Added to order", Toast.LENGTH_LONG).show();
+            }
+        };
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,6 +173,8 @@ public class ProductListActivity extends AppCompatProject {
             holder.mPriceView.setText(p.getPrice().toString() + "$");
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
+            holder.bt_add.setTag(position);
+            holder.bt_add.setOnClickListener(aggiungi);
 
         }
 
@@ -173,6 +186,7 @@ public class ProductListActivity extends AppCompatProject {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mContentView;
             final TextView mPriceView;
+            Button bt_add;
 
 
 
@@ -180,6 +194,7 @@ public class ProductListActivity extends AppCompatProject {
                 super(view);
                 mContentView = (TextView) view.findViewById(R.id.prod_name);
                 mPriceView = (TextView) view.findViewById(R.id.price);
+                bt_add = (Button) view.findViewById(R.id.Add_button);
             }
         }
     }

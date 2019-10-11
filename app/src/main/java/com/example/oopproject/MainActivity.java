@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatProject
         navigationView.setNavigationItemSelectedListener(this);
         dbManager = new DBManager(this);
         dbManager.open();
-        COUNT = ITEMS.size();
+        //dbManager.deleteAllRecords();
         dbManager.update();
+        COUNT = ITEMS.size();
     }
 
     @Override
