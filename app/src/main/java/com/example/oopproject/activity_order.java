@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class activity_order extends AppCompatActivity {
+public class activity_order extends AppCompatProject {
 
 
 

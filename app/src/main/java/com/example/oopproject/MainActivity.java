@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.example.oopproject.Database.DBManager;
-import com.example.oopproject.Dummy.DummyContent;
+import com.example.oopproject.Database.*;
+import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.ManageProduct.activity_manage_product;
 
 import android.view.View;
@@ -28,8 +29,9 @@ import android.view.Menu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatProject
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        System.out.println("ciao sono l'activity main nel metodo on create");
+        dbManager = new DBManager(this);
+        dbManager.open();
+        LP = dbManager.init();
     }
 
     @Override

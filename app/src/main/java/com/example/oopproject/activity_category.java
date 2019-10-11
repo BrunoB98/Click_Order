@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 
-public class activity_category extends AppCompatActivity {
+public class activity_category extends AppCompatProject {
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

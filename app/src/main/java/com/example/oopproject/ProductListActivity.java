@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.DisplayMetrics;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +21,9 @@ import com.example.oopproject.Dummy.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.oopproject.MainActivity.LP;
+
 
 /**
  * An activity representing a list of Products. This activity
@@ -30,7 +33,7 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ProductListActivity extends AppCompatActivity {
+public class ProductListActivity extends AppCompatProject {
     private boolean mTwoPane;
 
     @Override
@@ -92,7 +95,7 @@ public class ProductListActivity extends AppCompatActivity {
                     str = "null";
         }
 
-        for (Product pr : LogActivity.ITEMS) {
+        for (Product pr : LP) {
             if (pr.category.equals(str)) {
                 l.add(pr);
             }

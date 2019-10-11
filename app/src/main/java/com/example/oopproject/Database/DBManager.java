@@ -7,8 +7,14 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.oopproject.Database.DatabaseHelper;
+import com.example.oopproject.Dummy.Product;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static com.example.oopproject.AppCompatProject.ITEMS;
 
 public class DBManager {
     static final String PRODOTTO_IDP= "idp";
@@ -32,11 +38,10 @@ public class DBManager {
     static final String INGREDIENTE = "ingrediente";
     static final String DI = "di";
 
-    final Context context;
+    Context context;
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
-    Cursor c ;
-
+    Cursor c;
 
     public DBManager(Context context) {
         this.context = context;
@@ -52,6 +57,31 @@ public class DBManager {
 
     public void close() {
         DBHelper.close();
+    }
+
+    public List<Product> init() {
+        deleteAllRecords();
+        System.out.println("ho cancellato i record");
+        this.add("piselli", (float) 7.3, "primi");
+        this.add("bistecca", (float) 7.3, "secondi");
+        this.add("ceci", (float) 7.3, "secondi");
+        System.out.println("ho aggiunto i prodotti");
+        c = this.viewAllProducts();
+        System.out.println("ho visualizzato i prodotti");
+       // COUNT = c.getCount();
+        int idIndex = c.getColumnIndex("idp");
+        int nomepIndex = c.getColumnIndex("nomep");
+        int prezzoIndex = c.getColumnIndex("prezzo");
+        int nomecIndex = c.getColumnIndex("nomec");
+
+        c.moveToFirst();
+        // Add some sample items.
+        do {
+            Product p = new Product(c.getInt(idIndex), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
+          //  ITEMS.add(p);
+            // ITEM_MAP.put(p.id, p);
+        } while (c.moveToNext());
+        return ITEMS;
     }
 
     public Cursor viewProducts(String category) {
