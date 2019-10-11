@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.oopproject.AppCompatProject.ITEMS;
+import static com.example.oopproject.AppCompatProject.ITEM_MAP;
 
 public class DBManager {
     static final String PRODOTTO_IDP= "idp";
@@ -60,7 +61,7 @@ public class DBManager {
     }
 
     public List<Product> init() {
-        deleteAllRecords();
+        this.deleteAllRecords();
         System.out.println("ho cancellato i record");
         this.add("piselli", (float) 7.3, "primi");
         this.add("bistecca", (float) 7.3, "secondi");
@@ -78,8 +79,8 @@ public class DBManager {
         // Add some sample items.
         do {
             Product p = new Product(c.getInt(idIndex), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
-          //  ITEMS.add(p);
-            // ITEM_MAP.put(p.id, p);
+            ITEMS.add(p);
+            ITEM_MAP.put(p.id, p);
         } while (c.moveToNext());
         return ITEMS;
     }
@@ -101,7 +102,11 @@ public class DBManager {
     }
 
     public void add(String name, float price, String category) {
-        db.execSQL("INSERT INTO prodotto (nomep, prezzo, nomec) values (name, price, category)");
+        ContentValues cv = new ContentValues();
+        cv.put("nomep" , name);
+        cv.put("prezzo", price);
+        cv.put("nomec", category);
+        db.insert(PRODOTTO, null, cv);
     }
 
     public void addProduct(String productName, float price, String categoryName) {
