@@ -8,11 +8,12 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 
-public class activity_category extends AppCompatProject {
+public class activity_category extends AppCompatProjectOrder {
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        order.clear();
         setContentView(R.layout.activity_category);
         DisplayMetrics dm = getResources().getDisplayMetrics();
         button = findViewById(R.id.antipasti);

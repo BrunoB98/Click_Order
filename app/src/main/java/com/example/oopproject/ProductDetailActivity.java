@@ -24,7 +24,7 @@ import static android.content.Intent.parseUri;
  * item details are presented side-by-side with a list of items
  * in a {@link ProductListActivity}.
  */
-public class ProductDetailActivity extends AppCompatProject {
+public class ProductDetailActivity extends AppCompatProjectOrder {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

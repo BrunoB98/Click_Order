@@ -35,10 +35,10 @@ import java.util.List;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ProductListActivity extends AppCompatProject {
+public class ProductListActivity extends AppCompatProjectOrder {
     private boolean mTwoPane;
     protected static List<Product> l;
-    protected static Order o;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,6 @@ public class ProductListActivity extends AppCompatProject {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
-        o = new Order();
         /* funzione che cambia la visualizzazione in base alla grandezza del tablet */
         if (findViewById(R.id.product_detail_container) != null) {
             // The detail container view will be present only in the
@@ -62,15 +61,14 @@ public class ProductListActivity extends AppCompatProject {
     }
 
     public void ShowOrder(View view) {
-       /* Intent i = new Intent(this, activity_order.class);
-        i.putExtra("ordine", (Serializable) o);
-        startActivity(i);*/
-        Toast.makeText(view.getContext(), o.PrintOrder().toString(), Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this, activity_order.class);
+        startActivity(i);
+        Toast.makeText(view.getContext(), order.PrintOrder().toString(), Toast.LENGTH_LONG).show();
 
     }
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+    public void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         Bundle bundle = getIntent().getExtras();
         l = new ArrayList<Product>();
         String str;
@@ -113,12 +111,11 @@ public class ProductListActivity extends AppCompatProject {
         private final List<Product> mValues;
         private final boolean mTwoPane;
 
-        private final View.OnClickListener aggiungi = new View.OnClickListener() {
+        private final View.OnClickListener addToOrder = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(view.getTag().toString());
-                o.add(l.get((int)view.getTag()));
-                Toast.makeText(view.getContext(), "Added to order", Toast.LENGTH_LONG).show();
+                order.add(l.get((int)view.getTag()));
+                Toast.makeText(view.getContext(), "Added to order", Toast.LENGTH_SHORT).show();
             }
         };
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -174,7 +171,7 @@ public class ProductListActivity extends AppCompatProject {
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
             holder.bt_add.setTag(position);
-            holder.bt_add.setOnClickListener(aggiungi);
+            holder.bt_add.setOnClickListener(addToOrder);
 
         }
 

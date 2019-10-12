@@ -34,7 +34,7 @@ public class Add_product_activity extends AppCompatActivity {
     public void addToDatabase(View view) {
         dbManager.add(name.getText().toString(), Float.parseFloat(price.getText().toString()), category.getSelectedItem().toString());
         dbManager.update();
-        Toast.makeText(getApplicationContext(), "Product added to database:" + category.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Product added to database", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, activity_manage_product.class));
     }
 }

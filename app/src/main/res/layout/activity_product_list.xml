@@ -27,7 +27,7 @@
             android:background="#ABE2B2"
             android:onClick="ShowOrder"
             android:shadowColor="@color/colorPrimaryDark"
-            android:text="Riepilogo Ordine"
+            android:text="@string/order_summary"
             android:textColor="@android:color/black" />
 
     </com.google.android.material.appbar.AppBarLayout>

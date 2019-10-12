@@ -33,5 +33,10 @@ public class Order {
         total += product.price;
     }
 
+    public void clear() {
+        list.clear();
+        total = 0.0;
+    }
+
 
 }

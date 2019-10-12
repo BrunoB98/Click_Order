@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AppCompatProject extends AppCompatActivity {
+public abstract class AppCompatProject extends AppCompatActivity {
     public static DBManager dbManager;
     public static List<Product> ITEMS = new ArrayList<Product>();
     public static Map<Integer, Product> ITEM_MAP = new HashMap<Integer, Product>();
