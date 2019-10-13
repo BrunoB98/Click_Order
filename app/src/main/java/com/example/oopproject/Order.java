@@ -33,6 +33,11 @@ public class Order {
         total += product.price;
     }
 
+    public void remove(Product product) {
+        list.remove(product);
+        total -= product.price;
+    }
+
     public void clear() {
         list.clear();
         total = 0.0;

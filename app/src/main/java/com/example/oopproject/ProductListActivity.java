@@ -63,8 +63,6 @@ public class ProductListActivity extends AppCompatProjectOrder {
     public void ShowOrder(View view) {
         Intent i = new Intent(this, activity_order.class);
         startActivity(i);
-        Toast.makeText(view.getContext(), order.PrintOrder().toString(), Toast.LENGTH_LONG).show();
-
     }
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
