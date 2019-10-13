@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.oopproject.Database.DBManager;
 import com.example.oopproject.Database.*;
 import com.example.oopproject.Dummy.Product;
+import com.example.oopproject.ManageProduct.Category;
 import com.example.oopproject.ManageProduct.activity_manage_product;
 
 import android.view.View;
@@ -51,6 +52,24 @@ public class MainActivity extends AppCompatProject
         //dbManager.deleteAllRecords();
         dbManager.update();
         COUNT = ITEMS.size();
+
+
+
+
+        Cursor c = dbManager.cursorviewCategory();
+       int nomeIndex = c.getColumnIndex("nomec");
+
+
+        
+
+        if(c.moveToFirst()) {
+           do {
+               System.out.println(c.getString(nomeIndex));
+           } while (c.moveToNext());
+       }
+
+
+
     }
 
     @Override

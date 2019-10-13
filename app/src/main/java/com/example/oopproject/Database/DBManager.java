@@ -6,13 +6,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.oopproject.Database.DatabaseHelper;
 import com.example.oopproject.Dummy.Product;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.example.oopproject.AppCompatProject.ITEMS;
 import static com.example.oopproject.AppCompatProject.ITEM_MAP;
@@ -38,6 +35,7 @@ public class DBManager {
     static final String CONTIENE = "contiene";
     static final String INGREDIENTE = "ingrediente";
     static final String DI = "di";
+    static final String CATEGORIA = "categoria";
 
     Context context;
     DatabaseHelper DBHelper;
@@ -170,8 +168,36 @@ public class DBManager {
         db.delete(PRODOTTO, "nomep = '" + productName + "'", null);
     }
 
-    public void deleteIngredient(int ingredientId, String ingredientName) {
+    public void deleteIngredient(String ingredientName) {
         db.delete(INGREDIENTE, "nomei = '"+ ingredientName +"'", null);
+    }
+
+    public void addCategory(String categoryName) {
+        ContentValues ccat = new ContentValues();
+        ccat.put("nomec", categoryName);
+        db.insert(CATEGORIA, null, ccat );
+    }
+
+    public void deleteCategory(String categoryName) {
+        db.delete(CATEGORIA, "nomec = '" + categoryName + "'", null);
+    }
+
+    public List<String> viewCategory() {
+        Cursor c = db.rawQuery("SELECT * FROM categoria", null);
+        List<String> cat = new ArrayList<String>();
+        int nomecIndex = c.getColumnIndex("nomec");
+
+       if(c.moveToFirst()) {
+           do {
+               cat.add(c.getString(nomecIndex));
+           } while (c.moveToNext());
+       }
+        return cat;
+    }
+
+    public Cursor cursorviewCategory() {
+        Cursor c = db.rawQuery("SELECT * FROM categoria", null);
+        return c;
     }
 
     public void deleteAllRecords() {
@@ -180,6 +206,7 @@ public class DBManager {
         db.execSQL("DELETE FROM ingrediente");
         db.execSQL("DELETE FROM prodotto");
         db.execSQL("DELETE FROM ordine");
+        db.execSQL("DELETE FROM categoria");
     }
 
 
