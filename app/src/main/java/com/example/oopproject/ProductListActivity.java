@@ -69,35 +69,8 @@ public class ProductListActivity extends AppCompatProjectOrder {
     public void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         Bundle bundle = getIntent().getExtras();
         l = new ArrayList<Product>();
-        String str;
-        switch (bundle.getInt("categoria")) {
-            case R.id.antipasti:
-                str = "antipasti";
-                break;
-            case R.id.primi:
-                str = "primi";
-                break;
-            case R.id.secondi:
-                str = "secondi";
-                break;
-            case R.id.pizze:
-                str = "pizze";
-                break;
-            case R.id.bevande:
-                str = "bevande";
-                break;
-            case R.id.dolci:
-                str = "dolci";
-                break;
-                default:
-                    str = "null";
-        }
-
-        for (Product pr : ITEMS) {
-            if (pr.category.equals(str)) {
-                l.add(pr);
-            }
-        }
+        String str = bundle.getString("categoria");
+        l = dbManager.viewProducts(str.toLowerCase());
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, l, mTwoPane));
     }
 

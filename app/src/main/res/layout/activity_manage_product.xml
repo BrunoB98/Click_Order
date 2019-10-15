@@ -11,7 +11,7 @@
     android:layout_marginRight="40dp"
     android:layout_marginBottom="40dp"
     android:orientation="vertical"
-    tools:context=".ManageProduct.activity_manage_product">
+    tools:context=".ManageProduct.ManageProducts">
 
     <Button
         android:id="@+id/Add_button"

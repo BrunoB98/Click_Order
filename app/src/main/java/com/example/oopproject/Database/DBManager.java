@@ -61,26 +61,26 @@ public class DBManager {
     public void update() {
         ITEMS.clear();
         ITEM_MAP.clear();
-        c = this.viewAllProducts();
+        ITEMS = viewAllProducts();
+        return;
+    }
+
+    public List<Product> viewProducts(String category) {
+        List<Product> list = new ArrayList<Product>();
+        String s = "SELECT * FROM prodotto WHERE prodotto.nomec = '" + category + "'";
+        Cursor c = db.rawQuery(s, null);
         int idIndex = c.getColumnIndex("idp");
         int nomepIndex = c.getColumnIndex("nomep");
         int prezzoIndex = c.getColumnIndex("prezzo");
         int nomecIndex = c.getColumnIndex("nomec");
-
-        //c.moveToFirst();
-        // Add some sample items.
-        while (c.moveToNext()) {
-            Product p = new Product(c.getInt(idIndex), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
-            ITEMS.add(p);
-            ITEM_MAP.put(p.id, p);
+        if(c.moveToFirst()) {
+            do {
+                Product p = new Product(c.getInt(idIndex), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
+                list.add(p);
+             ITEM_MAP.put(p.id, p);
+            } while (c.moveToNext());
         }
-        return;
-    }
-
-    public Cursor viewProducts(String category) {
-        String s = "SELECT * FROM prodotto WHERE prodotto.nomec = " + category;
-        Cursor c = db.rawQuery(s, null);
-        return c;
+        return list;
     }
 
     public Cursor viewIngredients() {
@@ -88,9 +88,19 @@ public class DBManager {
         return c;
     }
 
-    public Cursor viewAllProducts() {
+    public List<Product> viewAllProducts() {
+        List<Product> list = new ArrayList<Product>();
         Cursor c = db.rawQuery("SELECT * FROM prodotto ORDER BY nomep", null);
-        return c;
+        int idIndex = c.getColumnIndex("idp");
+        int nomepIndex = c.getColumnIndex("nomep");
+        int prezzoIndex = c.getColumnIndex("prezzo");
+        int nomecIndex = c.getColumnIndex("nomec");
+        while (c.moveToNext()) {
+            Product p = new Product(c.getInt(idIndex), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
+            list.add(p);
+            ITEM_MAP.put(p.id, p);
+        }
+        return list;
     }
 
     public void add(String name, float price, String category) {

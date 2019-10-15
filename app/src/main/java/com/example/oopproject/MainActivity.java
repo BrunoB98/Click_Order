@@ -9,7 +9,7 @@ import com.example.oopproject.Database.DBManager;
 import com.example.oopproject.Database.*;
 import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.ManageProduct.Category;
-import com.example.oopproject.ManageProduct.activity_manage_product;
+import com.example.oopproject.ManageProduct.ManageProducts;
 
 import android.view.View;
 
@@ -52,24 +52,6 @@ public class MainActivity extends AppCompatProject
         //dbManager.deleteAllRecords();
         dbManager.update();
         COUNT = ITEMS.size();
-
-
-
-
-        Cursor c = dbManager.cursorviewCategory();
-       int nomeIndex = c.getColumnIndex("nomec");
-
-
-        
-
-        if(c.moveToFirst()) {
-           do {
-               System.out.println(c.getString(nomeIndex));
-           } while (c.moveToNext());
-       }
-
-
-
     }
 
     @Override
@@ -131,10 +113,10 @@ public class MainActivity extends AppCompatProject
         Intent i;
         switch (view.getId()) {
             case R.id.manage_product:
-                i = new Intent(this, activity_manage_product.class);
+                i = new Intent(this, ManageProducts.class);
                 break;
             default:
-                i = new Intent(this, activity_category.class);
+                i = new Intent(this, SelectCategory.class);
         }
         i.putExtra("view", view.getId());
         startActivity(i);

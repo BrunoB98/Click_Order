@@ -31,7 +31,8 @@
         android:layout_height="match_parent"
         android:layout_weight="0.15"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".activity_order" />
+        tools:context=".activity_order"
+        tools:listitem="@layout/product_list_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"

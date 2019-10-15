@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ManageProduct.Add_product_activity" />
-        <activity android:name=".ManageProduct.activity_manage_product"></activity>
+        <activity android:name=".ManageProduct.ManageProducts"></activity>
         <activity android:name=".activity_order" />
-        <activity android:name=".activity_category" />
+        <activity android:name=".SelectCategory" />
         <activity
             android:name=".ProductListActivity"
             android:label="@string/title_product_list"

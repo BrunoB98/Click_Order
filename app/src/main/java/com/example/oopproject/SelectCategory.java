@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 
-public class activity_category extends AppCompatProjectOrder {
+public class SelectCategory extends AppCompatProjectOrder {
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class activity_category extends AppCompatProjectOrder {
     }
 
     public void SelectCategory(View view) {
+        Button bt = (Button) view;
         /* Si effettua una valutazione della funzione per capire se si sta eseguendo un nuovo ordine, registrando un nuovo prodotto, ecc...*/
         Bundle bundle = getIntent().getExtras();
         int funzione = bundle.getInt("view");
@@ -52,7 +53,8 @@ public class activity_category extends AppCompatProjectOrder {
                 onStop();
         }
         /* Viene passata all'activity successiva la categoria di prodotto che si vuole aggiungere all'ordine o registrare*/
-        i.putExtra("categoria", view.getId());
+        System.out.println(bt.getText().toString());
+        i.putExtra("categoria", bt.getText().toString());
         startActivity(i);
     }
 }

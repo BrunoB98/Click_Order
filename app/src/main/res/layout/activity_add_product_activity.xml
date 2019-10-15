@@ -71,7 +71,7 @@
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/ing"
+                android:id="@+id/ing0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"

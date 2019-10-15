@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class activity_order extends AppCompatProjectOrder {
-    boolean mTwoPane;
+
     View recyclerView;
     protected static Adapter adapter;
     protected static TextView tot;
@@ -44,8 +44,5 @@ public class activity_order extends AppCompatProjectOrder {
         recyclerView.setAdapter(adapter);
     }
 
-    public void updateTotal() {
-
-    }
 
 }
