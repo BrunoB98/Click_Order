@@ -1,14 +1,9 @@
 package com.example.oopproject;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.example.oopproject.Database.DBManager;
-import com.example.oopproject.Database.*;
-import com.example.oopproject.Dummy.Product;
-import com.example.oopproject.ManageProduct.Category;
 import com.example.oopproject.ManageProduct.ManageProducts;
 
 import android.view.View;
@@ -18,17 +13,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.oopproject.NewOrder.SelectCategory;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatProject
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -100,8 +92,8 @@ public class MainActivity extends AppCompatProject
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_manage_category) {
+          //  startActivity(new Intent(this, ManageProduct.ManageCategories.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.example.oopproject.MainActivity;
 import com.example.oopproject.R;
-import com.example.oopproject.ShowFragment;
 
 public class ManageProducts extends AppCompatActivity {
     public FragmentManager fm = getSupportFragmentManager();
@@ -29,27 +28,28 @@ public class ManageProducts extends AppCompatActivity {
 
 
     public void setFragment(View view) {
-       // fragment = new AddFragment();
+        // fragment = new AddFragment();
 
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.Add_button:
                 startActivity(new Intent(this, Add_product_activity.class));
                 break;
-                case R.id.Modify_button:
+            case R.id.Modify_button:
                 fragment = new ModifyFragment();
-             //   fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
+                fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
                 break;
            /* case R.id.Delete_button:
                 fragment = new DeleteFragment();
                 break;*/
             case R.id.View_button:
                 fragment = new ShowFragment();
+                fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
                 break;
             default:
                 fragment = new Fragment();
-               // fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
+                // fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
                 break;
         }
-       // fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
+
     }
 }

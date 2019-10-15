@@ -1,9 +1,9 @@
-package com.example.oopproject;
+package com.example.oopproject.NewOrder;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.example.oopproject.Database.DBManager;
+import com.example.oopproject.R;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.fragment.app.Fragment;

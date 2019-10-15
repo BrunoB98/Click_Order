@@ -1,4 +1,4 @@
-package com.example.oopproject;
+package com.example.oopproject.NewOrder;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,16 +7,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.oopproject.Dummy.Product;
+import com.example.oopproject.R;
 
 import java.util.List;
 
 import static com.example.oopproject.AppCompatProjectOrder.order;
-import static com.example.oopproject.activity_order.adapter;
-import static com.example.oopproject.activity_order.tot;
+import static com.example.oopproject.NewOrder.activity_order.adapter;
+import static com.example.oopproject.NewOrder.activity_order.tot;
 
 public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter2.ViewHolder> {
 

@@ -1,25 +1,15 @@
-package com.example.oopproject;
+package com.example.oopproject.NewOrder;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.oopproject.Dummy.Product;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.oopproject.AppCompatProjectOrder;
+import com.example.oopproject.R;
 
 public class activity_order extends AppCompatProjectOrder {
 

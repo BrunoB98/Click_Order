@@ -3,6 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowFragment">
-    <include layout="@layout/product_list" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ManageProduct.ShowFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_list"
+        android:name="com.example.oopproject.fragment_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".ManageProduct.ShowFragment"
+        tools:listitem="@layout/activity_view_list" />
 </FrameLayout>

@@ -1,4 +1,4 @@
-package com.example.oopproject;
+package com.example.oopproject.Dummy;
 
 import com.example.oopproject.Dummy.Product;
 

@@ -1,11 +1,10 @@
-package com.example.oopproject;
+package com.example.oopproject.NewOrder;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,9 +17,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.oopproject.AppCompatProjectOrder;
 import com.example.oopproject.Dummy.*;
+import com.example.oopproject.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

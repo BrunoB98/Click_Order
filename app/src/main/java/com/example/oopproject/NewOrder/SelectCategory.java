@@ -1,12 +1,14 @@
-package com.example.oopproject;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.oopproject.NewOrder;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.oopproject.AppCompatProjectOrder;
+import com.example.oopproject.MainActivity;
+import com.example.oopproject.R;
 
 public class SelectCategory extends AppCompatProjectOrder {
     Button button;

@@ -9,22 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ManageProduct.view_list"></activity>
         <activity android:name=".ManageProduct.Add_product_activity" />
-        <activity android:name=".ManageProduct.ManageProducts"></activity>
-        <activity android:name=".activity_order" />
-        <activity android:name=".SelectCategory" />
+        <activity android:name=".ManageProduct.ManageProducts" />
+        <activity android:name=".NewOrder.activity_order" />
+        <activity android:name=".NewOrder.SelectCategory" />
         <activity
-            android:name=".ProductListActivity"
+            android:name=".NewOrder.ProductListActivity"
             android:label="@string/title_product_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProductDetailActivity"
+            android:name=".NewOrder.ProductDetailActivity"
             android:label="@string/title_product_detail"
-            android:parentActivityName=".ProductListActivity"
+            android:parentActivityName=".NewOrder.ProductListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.oopproject.ProductListActivity" />
+                android:value="com.example.oopproject.NewOrder.ProductListActivity" />
         </activity>
         <activity
             android:name=".MainActivity"

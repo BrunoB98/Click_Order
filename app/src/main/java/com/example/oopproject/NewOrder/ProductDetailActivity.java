@@ -1,22 +1,19 @@
-package com.example.oopproject;
+package com.example.oopproject.NewOrder;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.oopproject.AppCompatProjectOrder;
+import com.example.oopproject.NewOrder.ProductDetailFragment;
+import com.example.oopproject.NewOrder.ProductListActivity;
+import com.example.oopproject.R;
 
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.core.app.NavUtils;
 
 import android.view.MenuItem;
-
-import static android.content.Intent.parseUri;
 
 /**
  * An activity representing a single Product detail screen. This

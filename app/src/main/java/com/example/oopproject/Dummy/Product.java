@@ -42,6 +42,8 @@ public class Product implements Comparable<Product> {
         return price;
     }
 
+    public String getCategory() { return category; }
+
 
     public String printIngredients() {
         return "Ingredienti: " + ingredients;
