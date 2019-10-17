@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManageProduct.view_list"></activity>
+        <activity android:name=".ManageCateg.ManageCategories"></activity>
         <activity android:name=".ManageProduct.Add_product_activity" />
         <activity android:name=".ManageProduct.ManageProducts" />
         <activity android:name=".NewOrder.activity_order" />

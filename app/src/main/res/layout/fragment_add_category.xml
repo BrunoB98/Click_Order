@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddCategoryFragment">
+    tools:context=".ManageCateg.AddCategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/insert_category_name"
+            android:hint="Insert category to added"
             android:inputType="textPersonName"
             android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@+id/add_category_button"
@@ -43,10 +43,9 @@
             android:id="@+id/add_category_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="addCall"
             android:paddingTop="30dp"
             android:paddingBottom="30dp"
-            android:text="@string/add_category"
+            android:text="ADD CATEGORY"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline13"

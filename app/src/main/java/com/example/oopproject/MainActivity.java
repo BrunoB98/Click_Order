@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.oopproject.Database.DBManager;
+import com.example.oopproject.ManageCateg.ManageCategories;
 import com.example.oopproject.ManageProduct.ManageProducts;
 
 import android.view.View;
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatProject
         navigationView.setNavigationItemSelectedListener(this);
         dbManager = new DBManager(this);
         dbManager.open();
+        dbManager.addCategory("primi");
+        dbManager.addCategory("secondi");
+        dbManager.addCategory("bevande");
         //dbManager.deleteAllRecords();
         dbManager.update();
         COUNT = ITEMS.size();
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatProject
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_manage_category) {
-          //  startActivity(new Intent(this, ManageProduct.ManageCategories.class));
+            startActivity(new Intent(this, ManageCategories.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -10,6 +10,9 @@ import androidx.appcompat.widget.Toolbar;
 
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -59,7 +62,15 @@ public class ProductListActivity extends AppCompatProjectOrder {
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
-
+/*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem item =
+        return;
+    }
+*/
     public void ShowOrder(View view) {
         Intent i = new Intent(this, activity_order.class);
         startActivity(i);
@@ -73,6 +84,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
         l = dbManager.viewProducts(str.toLowerCase());
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, l, mTwoPane));
     }
+
 
     /* Nested static class to manage the RecyclerView */
     public static class SimpleItemRecyclerViewAdapter
