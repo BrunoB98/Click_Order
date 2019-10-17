@@ -42,9 +42,6 @@ public class MainActivity extends AppCompatProject
         navigationView.setNavigationItemSelectedListener(this);
         dbManager = new DBManager(this);
         dbManager.open();
-        dbManager.addCategory("primi");
-        dbManager.addCategory("secondi");
-        dbManager.addCategory("bevande");
         //dbManager.deleteAllRecords();
         dbManager.update();
         COUNT = ITEMS.size();
