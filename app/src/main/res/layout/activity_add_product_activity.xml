@@ -82,7 +82,7 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:hint="Insert ingredient 1"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:textSize="25sp" />
 
             <EditText
@@ -97,7 +97,7 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:hint="Insert ingredient 2"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:textSize="25sp" />
 
             <EditText
@@ -112,7 +112,7 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:hint="Insert ingredient 3"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:textSize="25sp" />
 
             <EditText
@@ -127,7 +127,7 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:hint="Insert ingredient 4"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:textSize="25sp" />
 
             <EditText
@@ -142,7 +142,7 @@
                 android:layout_marginBottom="10dp"
                 android:ems="10"
                 android:hint="Insert ingredient 5"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:textSize="25sp" />
 
             <Button

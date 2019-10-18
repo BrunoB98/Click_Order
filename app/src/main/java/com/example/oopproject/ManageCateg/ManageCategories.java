@@ -1,13 +1,9 @@
 package com.example.oopproject.ManageCateg;
-
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.example.oopproject.AppCompatProject;
 import com.example.oopproject.MainActivity;
 import com.example.oopproject.R;
@@ -19,7 +15,6 @@ public class ManageCategories extends AppCompatProject {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_categories);
-
     }
 
     @Override
@@ -29,8 +24,6 @@ public class ManageCategories extends AppCompatProject {
 
 
     public void setFragment(View view) {
-        // fragment = new AddFragment();
-
         switch(view.getId()) {
             case R.id.add_category_button:
                 fragment = new AddCategoryFragment();
@@ -46,11 +39,7 @@ public class ManageCategories extends AppCompatProject {
                 break;
             default:
                 fragment = new Fragment();
-                // fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
                 break;
         }
-        // fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
     }
-
-
 }

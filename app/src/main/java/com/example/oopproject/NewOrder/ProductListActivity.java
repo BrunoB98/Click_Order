@@ -55,7 +55,6 @@ public class ProductListActivity extends AppCompatProjectOrder {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
-
         recyclerView = findViewById(R.id.product_list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
@@ -72,7 +71,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
     public void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        l = dbManager.viewProducts(spin.getSelectedItem().toString().toLowerCase());
+        l = dbManager.viewProducts(spin.getSelectedItem().toString());
         adapter = new SimpleItemRecyclerViewAdapter(this, l, mTwoPane);
         recyclerView.setAdapter(adapter);
     }

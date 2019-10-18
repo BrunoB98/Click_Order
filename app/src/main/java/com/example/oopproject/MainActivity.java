@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatProject
         navigationView.setNavigationItemSelectedListener(this);
         dbManager = new DBManager(this);
         dbManager.open();
-        //dbManager.deleteAllRecords();
         dbManager.update();
         COUNT = ITEMS.size();
     }
@@ -93,8 +92,8 @@ public class MainActivity extends AppCompatProject
 
         } else if (id == R.id.nav_view) {
 
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.nav_manage_category) {
             startActivity(new Intent(this, ManageCategories.class));
         }

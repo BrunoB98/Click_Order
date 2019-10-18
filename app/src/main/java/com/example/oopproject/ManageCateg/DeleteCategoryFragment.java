@@ -1,5 +1,4 @@
 package com.example.oopproject.ManageCateg;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,8 +15,6 @@ import android.widget.TextView;
 import com.example.oopproject.R;
 
 import static com.example.oopproject.AppCompatProject.dbManager;
-
-
 public class DeleteCategoryFragment extends Fragment {
 
     Button delete_category;
@@ -47,15 +44,4 @@ public class DeleteCategoryFragment extends Fragment {
         });
         return view;
     }
-
-
-
-    /*
-    public void deleteCategoryFromDB() {
-        dbManager.deleteCategory(category_name.getText().toString());
-        System.out.println("Eliminata categoria " + category_name.getText().toString());
-
-    }*/
-
-
 }

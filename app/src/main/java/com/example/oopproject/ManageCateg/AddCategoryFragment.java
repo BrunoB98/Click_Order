@@ -1,5 +1,6 @@
 package com.example.oopproject.ManageCateg;
 
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.oopproject.R;
 
@@ -31,8 +33,8 @@ public class AddCategoryFragment extends Fragment {
         add_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbManager.addCategory(category_name.getText().toString());
-                category_name.setText("");
+                    dbManager.addCategory(category_name.getText().toString());
+                    category_name.setText("");
             }
         });
         return view;
