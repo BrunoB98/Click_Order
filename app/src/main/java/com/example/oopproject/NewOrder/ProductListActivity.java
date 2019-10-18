@@ -16,7 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,28 +31,22 @@ import com.example.oopproject.R;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-/**
- * An activity representing a list of Products. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link ProductDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
 public class ProductListActivity extends AppCompatProjectOrder {
     private boolean mTwoPane;
-    protected static List<Product> l;
-
+    protected static List<Product> l = new ArrayList<Product>();
+    Spinner spin;
+    ImageButton goSearch;
+    RecyclerView.Adapter adapter;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(getTitle());
+        spin = findViewById(R.id.spin_categ);
+        goSearch = findViewById(R.id.go_search);
+       // setSupportActionBar(spin);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dbManager.viewCategory());
+        spin.setAdapter(adapter);
         /* funzione che cambia la visualizzazione in base alla grandezza del tablet */
         if (findViewById(R.id.product_detail_container) != null) {
             // The detail container view will be present only in the
@@ -58,19 +56,15 @@ public class ProductListActivity extends AppCompatProjectOrder {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.product_list);
+        recyclerView = findViewById(R.id.product_list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        setupRecyclerView(recyclerView);
     }
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_menu, menu);
-        MenuItem item =
-        return;
+
+    public void goSearch(View view) {
+        setupRecyclerView(recyclerView);
     }
-*/
+
     public void ShowOrder(View view) {
         Intent i = new Intent(this, activity_order.class);
         startActivity(i);
@@ -78,13 +72,10 @@ public class ProductListActivity extends AppCompatProjectOrder {
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */
     public void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        Bundle bundle = getIntent().getExtras();
-        l = new ArrayList<Product>();
-        String str = bundle.getString("categoria");
-        l = dbManager.viewProducts(str.toLowerCase());
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, l, mTwoPane));
+        l = dbManager.viewProducts(spin.getSelectedItem().toString().toLowerCase());
+        adapter = new SimpleItemRecyclerViewAdapter(this, l, mTwoPane);
+        recyclerView.setAdapter(adapter);
     }
-
 
     /* Nested static class to manage the RecyclerView */
     public static class SimpleItemRecyclerViewAdapter

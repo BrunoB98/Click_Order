@@ -13,7 +13,6 @@
         <activity android:name=".ManageProduct.Add_product_activity" />
         <activity android:name=".ManageProduct.ManageProducts" />
         <activity android:name=".NewOrder.activity_order" />
-        <activity android:name=".NewOrder.SelectCategory" />
         <activity
             android:name=".NewOrder.ProductListActivity"
             android:label="@string/title_product_list"

@@ -14,7 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
-import com.example.oopproject.NewOrder.SelectCategory;
+import com.example.oopproject.NewOrder.ProductListActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatProject
                 i = new Intent(this, ManageProducts.class);
                 break;
             default:
-                i = new Intent(this, SelectCategory.class);
+                i = new Intent(this, ProductListActivity.class);
         }
         i.putExtra("view", view.getId());
         startActivity(i);
