@@ -23,6 +23,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatProject
         implements NavigationView.OnNavigationItemSelectedListener {
 
