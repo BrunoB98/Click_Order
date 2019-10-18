@@ -16,12 +16,11 @@ import static com.example.oopproject.AppCompatProject.ITEM_MAP;
 
 public class DBManager {
     static final String PRODOTTO_IDP= "idp";
-    static final String PRODOTTO_N = "nomep";
-    static final String PRODOTTO_PRE = "prezzo";
+    static final String PRODOTTO_NOME = "nomep";
+    static final String PRODOTTO_PREZZO = "prezzo";
     static final String PRODOTTO_NOMEC = "nomec";
     static final String CONTIENE_IDP = "idp";
-    static final String CONTIENE_IDI = "idi";
-    static final String INGREDIENTE_IDI = "idi";
+    static final String CONTIENE_NOMEI = "nomei";
     static final String INGREDIENTE_NOMEI = "nomei";
     static final String DI_IDO = "ido";
     static final String DI_IDP = "idp";
@@ -29,6 +28,8 @@ public class DBManager {
     static final String ORDINE_TAVOLO = "tavolo";
     static final String ORDINE_NPERSONE = "npersone";
     static final String ORDINE_TOTALE = "totale";
+    static final String CATEGORIA_NOME = "nomec";
+
     static final String DBNAME= "TestDB";
     static final String ORDINE = "ordine";
     static final String PRODOTTO = "prodotto";
@@ -41,6 +42,8 @@ public class DBManager {
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
     Cursor c;
+
+    /* FUNZIONI DEL DB GENERALI */
 
     public DBManager(Context context) {
         this.context = context;
@@ -65,6 +68,8 @@ public class DBManager {
         return;
     }
 
+    /* FUNZIONI SUI PRODOTTI */
+
     public List<Product> viewProducts(String category) {
         List<Product> list = new ArrayList<Product>();
         String s = "SELECT * FROM prodotto WHERE prodotto.nomec = '" + category + "'";
@@ -83,11 +88,6 @@ public class DBManager {
         return list;
     }
 
-    public Cursor viewIngredients() {
-        Cursor c = db.rawQuery("SELECT * FROM ingrediente", null);
-        return c;
-    }
-
     public List<Product> viewAllProducts() {
         List<Product> list = new ArrayList<Product>();
         Cursor c = db.rawQuery("SELECT * FROM prodotto ORDER BY nomep", null);
@@ -103,6 +103,8 @@ public class DBManager {
         return list;
     }
 
+
+
     public void add(String name, float price, String category) {
         ContentValues cv = new ContentValues();
         cv.put("nomep" , name);
@@ -111,34 +113,38 @@ public class DBManager {
         db.insert(PRODOTTO, null, cv);
     }
 
+    /* Aggiunta di un prodotto con categoria */
     public void addProduct(String productName, float price, String categoryName) {
         ContentValues cv = new ContentValues();
         cv.put("nomep" , productName);
         cv.put("prezzo", price);
         cv.put("nomec", categoryName);
         db.insert(PRODOTTO, null, cv);
-        /*
-        Cursor c_idp = db.rawQuery("SELECT idp FROM prodotto WHERE nomep = " + productName, null);
-        int idIndex = c_idp.getColumnIndex("idp");
-        int id = c_idp.getInt(idIndex);
-        int i;
-        ContentValues c_cont = new ContentValues();
-        c_cont.put("idp", id);
-        for (i = 0; i < ingredients.size(); i++) {
-            Cursor ci = db.rawQuery("SELECT idp FROM ingrediente WHERE nomei = " + ingredients.get(i), null);
-            int idiIndex = ci.getColumnIndex("idi");
-            int id_ing = ci.getInt(idiIndex);
-            c_cont.put("idi", id_ing );
-            db.insert(CONTIENE, null, c_cont );
-        }
-        */
 
     }
+
+    /* aggiunta in tabella contiene dato prodotto e ingrediente */
+    public void addContiene(String productName, String ingredientName) {
+        /* ottengo l'id del prodotto tramite una query */
+        String sql = "SELECT * FROM " + PRODOTTO + " WHERE prodotto.nomep = '" + productName + "'";
+        Cursor c = db.rawQuery(sql, null);
+        int idpIndex = c.getColumnIndex("idp");
+        int id = 0;
+        if(c.moveToFirst()) {
+           id = c.getInt(idpIndex);
+        }
+        ContentValues cv = new ContentValues();
+        cv.put(CONTIENE_NOMEI, ingredientName);
+        cv.put(CONTIENE_IDP, id);
+        db.insert(CONTIENE, null, cv);
+    }
+
+
 
     /*Ritorna un arraylist di stringhe contenenti i nomi degli ingredienti del prodotto passato come parametro*/
     public ArrayList<String> viewProductDetails( String productName) {
 
-         Cursor c = db.rawQuery("SELECT nomei FROM prodotto INNER JOIN contiene INNER JOIN ingrediente WHERE prodotto.nomep = ' " + productName + "'", null);
+         Cursor c = db.rawQuery("SELECT nomei FROM prodotto INNER JOIN contiene WHERE prodotto.nomep = ' " + productName + "'", null);
          int nomeiIndex = c.getColumnIndex("nomei");
          ArrayList<String> strings = new ArrayList<String>();
          if(c.moveToFirst()) {
@@ -148,6 +154,14 @@ public class DBManager {
          }
          return strings;
     }
+
+
+    public void deleteProduct(int productId, String productName) {
+        db.delete(PRODOTTO, PRODOTTO_NOME + " = '" + productName + "'", null);
+    }
+
+
+    /* FUNZIONI ORDINE */
 
     public void addToOrder(int productId, int orderId, int tableNumber, int personNumber ) {
 
@@ -166,6 +180,23 @@ public class DBManager {
         db.insert(ORDINE, null, c_ordine);
     }
 
+
+    /* FUNZIONI INGREDIENTI */
+
+    public List<String> viewAllIngredients() {
+        Cursor c = db.rawQuery("SELECT * FROM ingrediente", null);
+        int nomeIndex = c.getColumnIndex("nomei");
+        List<String> l = new ArrayList<String>();
+        if(c.moveToFirst()) {
+            do {
+                l.add(c.getString(nomeIndex));
+            }while(c.moveToNext());
+        }
+        return l;
+    }
+
+
+    /* aggiunta ingrediente al database */
     public void addIngredient(String ingredientName) {
 
         ContentValues c = new ContentValues();
@@ -174,13 +205,12 @@ public class DBManager {
 
     }
 
-    public void deleteProduct(int productId, String productName) {
-        db.delete(PRODOTTO, "nomep = '" + productName + "'", null);
-    }
 
     public void deleteIngredient(String ingredientName) {
-        db.delete(INGREDIENTE, "nomei = '"+ ingredientName +"'", null);
+        db.delete(INGREDIENTE,  INGREDIENTE_NOMEI + " = '"+ ingredientName +"'", null);
     }
+
+    /* FUNZIONI CATEGORIA */
 
     public void addCategory(String categoryName) {
         ContentValues ccat = new ContentValues();
@@ -189,7 +219,7 @@ public class DBManager {
     }
 
     public void deleteCategory(String categoryName) {
-        db.delete(CATEGORIA, "nomec = '" + categoryName + "'", null);
+        db.delete(CATEGORIA, CATEGORIA_NOME + " = '" + categoryName + "'", null);
     }
 
     public List<String> viewCategory() {
@@ -205,10 +235,8 @@ public class DBManager {
         return cat;
     }
 
-    public Cursor cursorviewCategory() {
-        Cursor c = db.rawQuery("SELECT * FROM categoria", null);
-        return c;
-    }
+
+    /* FUNZIONE PULIZIA DATABASE */
 
     public void deleteAllRecords() {
         db.execSQL("DELETE FROM di");
@@ -218,6 +246,5 @@ public class DBManager {
         db.execSQL("DELETE FROM ordine");
         db.execSQL("DELETE FROM categoria");
     }
-
 
 }
