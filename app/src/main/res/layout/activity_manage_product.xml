@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="40dp"
-    android:layout_marginLeft="40dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginLeft="10dp"
     android:layout_marginTop="40dp"
-    android:layout_marginEnd="40dp"
-    android:layout_marginRight="40dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginRight="10dp"
     android:layout_marginBottom="40dp"
     android:orientation="vertical"
     tools:context=".ManageProduct.ManageProducts">
@@ -18,6 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:onClick="setFragment"
         android:text="@string/add_new_product"
         android:textSize="24sp" />
@@ -27,6 +31,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:onClick="setFragment"
         android:text="@string/modify_product"
         android:textSize="24sp" />
@@ -36,6 +44,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:onClick="setFragment"
         android:text="@string/view_product"
         android:textSize="24sp" />
@@ -45,15 +57,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:onClick="setFragment"
         android:text="@string/delete_product"
         android:textSize="24sp" />
 
     <FrameLayout
         android:id="@+id/Frag_panel"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"/>
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.5" />
+
 
 </LinearLayout>
+
