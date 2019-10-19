@@ -1,12 +1,24 @@
 <resources>
     <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <string-array name="payment_entries">
+        <item>Cash only</item>
+        <item>Card only</item>
+        <item>Cash and card</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="payment_values">
+        <item>cash_only</item>
+        <item>card_only</item>
+        <item>cash_and_card</item>
+    </string-array>
+
+    <string-array name="language_entries">
+        <item>English</item>
+        <item>Italiano</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>english</item>
+        <item>italiano</item>
     </string-array>
 </resources>

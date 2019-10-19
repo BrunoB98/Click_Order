@@ -15,6 +15,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.example.oopproject.NewOrder.ProductListActivity;
+import com.example.oopproject.Settings.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,8 +23,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatProject
         implements NavigationView.OnNavigationItemSelectedListener {
