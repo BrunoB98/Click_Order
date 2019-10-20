@@ -18,7 +18,7 @@ import com.example.oopproject.Dummy.*;
 import static com.example.oopproject.AppCompatProject.ITEM_MAP;
 import static com.example.oopproject.AppCompatProject.dbManager;
 
-public class ProductDetailFragment extends Fragment {
+public class  ProductDetailFragment extends Fragment {
     //ARG_ITEM_ID è l'etichetta utile per passare i dati tramite intent
     public static final String ARG_ITEM_ID = "product_id";
     private Product mItem;

@@ -36,7 +36,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Insert product name"
+                android:hint="@string/insert_prod_name"
                 android:inputType="textPersonName"
                 android:textSize="25sp" />
 
@@ -81,7 +81,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Insert ingredient 1"
+                android:hint="@string/insert_ingredient_1"
                 android:inputType="textPersonName"
                 android:textSize="25sp" />
 
@@ -96,7 +96,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Insert ingredient 2"
+                android:hint="@string/insert_ingredient_2"
                 android:inputType="textPersonName"
                 android:textSize="25sp" />
 
@@ -111,7 +111,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Insert ingredient 3"
+                android:hint="@string/insert_ingredient_3"
                 android:inputType="textPersonName"
                 android:textSize="25sp" />
 
@@ -126,7 +126,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Insert ingredient 4"
+                android:hint="@string/insert_ingredient_4"
                 android:inputType="textPersonName"
                 android:textSize="25sp" />
 
@@ -141,7 +141,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:ems="10"
-                android:hint="Insert ingredient 5"
+                android:hint="@string/insert_ingredient_5"
                 android:inputType="textPersonName"
                 android:textSize="25sp" />
 
@@ -156,7 +156,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
                 android:onClick="addToDatabase"
-                android:text=" ADD TO DATABASE"
+                android:text="@string/add_to_database"
                 android:textSize="25sp" />
 
         </LinearLayout>

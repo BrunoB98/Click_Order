@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.oopproject.Database.DBManager;
+import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.ManageCateg.ManageCategories;
 import com.example.oopproject.ManageProduct.ManageProducts;
 
@@ -23,6 +24,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatProject
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatProject
         dbManager.open();
         dbManager.update();
         COUNT = ITEMS.size();
+        List<Product> p = dbManager.searchProduct("ama");
+        System.out.println(p.toString());
     }
 
     @Override

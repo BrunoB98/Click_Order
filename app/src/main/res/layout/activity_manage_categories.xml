@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:onClick="setFragment"
-        android:text="ADD NEW CATOGORY"
+        android:text="@string/add_new_cat"
         android:textSize="24sp" />
 
     <Button
@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:onClick="setFragment"
-        android:text="VIEW CATEGORIES"
+        android:text="@string/view_cat"
         android:textSize="24sp" />
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:onClick="setFragment"
-        android:text="DELETE CATEGORY"
+        android:text="@string/delete_category"
         android:textSize="24sp" />
 
     <FrameLayout

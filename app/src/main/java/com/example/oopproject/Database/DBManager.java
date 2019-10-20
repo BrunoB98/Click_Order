@@ -111,25 +111,56 @@ public class DBManager {
         db.insert(PRODOTTO, null, cv);
     }
 
+
     /* aggiunta in tabella contiene dato prodotto e ingrediente */
     public void addContiene(String productName, String ingredientName) {
         /* ottengo l'id del prodotto tramite una query */
-        String sql = "SELECT * FROM " + PRODOTTO + " WHERE prodotto.nomep = '" + productName.toUpperCase() + "'";
+        String sql = "SELECT * FROM prodotto WHERE prodotto.nomep = '" + productName.toUpperCase() + "'";
         Cursor c = db.rawQuery(sql, null);
         int idpIndex = c.getColumnIndex("idp");
+        int nomepIndex = c.getColumnIndex("nomep");
         int id = 0;
-        if(c.moveToFirst()) {
-           id = c.getInt(idpIndex);
-        }
+        c.moveToFirst();
+        id = c.getInt(idpIndex);
+        System.out.println("id" + Integer.toString(c.getInt(idpIndex)));
+        System.out.println("nome" + c.getString(nomepIndex));
+
         ContentValues cv = new ContentValues();
         cv.put(CONTIENE_NOMEI, ingredientName.toUpperCase());
         cv.put(CONTIENE_IDP, id);
         db.insert(CONTIENE, null, cv);
     }
 
+    public List<Product> searchProduct(String name) {
+        Cursor c  = db.rawQuery("SELECT * FROM prodotto WHERE prodotto.nomep LIKE '" + name.toUpperCase() + "%'", null);
+        int idIndex = c.getColumnIndex("idp");
+        int nomeIndex = c.getColumnIndex("nomep");
+        int prezzoindex = c.getColumnIndex("prezzo");
+        int catIndex = c.getColumnIndex("nomec");
+        List<Product> l = new ArrayList<Product>();
+        if(c.moveToFirst()) {
+            do {
+                Product p = new Product(c.getInt(idIndex), c.getString(nomeIndex), c.getFloat(prezzoindex), c.getString(catIndex));
+                l.add(p);
+            } while (c.moveToNext());
+        }
+        return l;
+    }
+
+    public void viewContiene() {
+        Cursor c = db.rawQuery("SELECT * FROM contiene", null);
+        int idIndex = c.getColumnIndex("idp");
+        int nomeIndex = c.getColumnIndex("nomei");
+        if(c.moveToFirst()) {
+            do {
+                System.out.println("ingrediente: "+ c.getString(nomeIndex) + " prodotto: " + c.getInt(idIndex));
+            }while(c.moveToNext());
+        }
+    }
+
     /*Ritorna un arraylist di stringhe contenenti i nomi degli ingredienti del prodotto passato come parametro*/
     public ArrayList<String> viewProductDetails(Product product) {
-         Cursor c = db.rawQuery("SELECT nomei FROM prodotto INNER JOIN contiene WHERE prodotto.idp = ' " + product.getId() + "'", null);
+         Cursor c = db.rawQuery("SELECT nomei FROM contiene WHERE contiene.idp = " + product.getId(), null);
          int nomeiIndex = c.getColumnIndex("nomei");
          ArrayList<String> strings = new ArrayList<String>();
          if(c.moveToFirst()) {

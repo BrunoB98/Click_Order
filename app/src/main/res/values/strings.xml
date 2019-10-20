@@ -23,6 +23,29 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="manage_category">Manage categories</string>
+    <string name="insert_prod_name">Insert product name</string>
+    <string name="insert_prod_price">Insert product price</string>
+    <string name="insert_ingredient_1">Insert ingredient 1</string>
+    <string name="insert_ingredient_2">Insert ingredient 2</string>
+    <string name="insert_ingredient_3">Insert ingredient 3</string>
+    <string name="insert_ingredient_4">Insert ingredient 4</string>
+    <string name="insert_ingredient_5">Insert ingredient 5</string>
+    <string name="add_to_database">ADD TO DATABASE</string>
+    <string name="add_new_cat">ADD NEW CATEGORY</string>
+    <string name="view_cat">VIEW CATEGORIES</string>
+    <string name="delete_category">DELETE CATEGORY</string>
+    <string name="total">TOTAL</string>
+    <string name="add_cat">ADD CATEGORY</string>
+    <string name="insert_cat">Insert category to add</string>
+    <string name="delete_cat">DELETE CATEGORY</string>
+    <string name="select_cat">Select the category to delete</string>
+    <string name="add">ADD</string>
+    <string name="modify">MODIFY</string>
+
+
+
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

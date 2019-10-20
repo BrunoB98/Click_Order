@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.65"
         android:clickable="true"
-        android:text="ADD"
+        android:text="@string/add"
         android:textSize="11sp" />
 
     <Button
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.65"
-        android:text="MODIFY"
+        android:text="@string/modify"
         android:textSize="11sp" />
 
 </LinearLayout>

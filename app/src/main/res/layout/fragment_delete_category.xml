@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Select the category to delete"
+                android:text="@string/select_cat"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -42,7 +42,7 @@
 
                 android:paddingTop="30dp"
                 android:paddingBottom="30dp"
-                android:text="DELETE CATEGORY"
+                android:text="@string/delete_cat"
                 android:textSize="25sp" />
         </LinearLayout>
     </ScrollView>

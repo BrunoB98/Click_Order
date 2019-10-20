@@ -47,7 +47,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_weight="0.4"
-            android:text="TOTAL"
+            android:text="@string/total"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 

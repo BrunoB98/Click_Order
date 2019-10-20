@@ -41,8 +41,9 @@ public class Add_product_activity extends AppCompatProject {
     public void addToDatabase(View view) {
         dbManager.add(name.getText().toString(), Float.parseFloat(price.getText().toString()), category.getSelectedItem().toString());
         dbManager.update();
-        for(int i = 0; i<ing.size(); i++) {
-            if (ing.get(i).getText().toString() != "") {
+        System.out.println(ing.toString());
+        for(int i = 0; i<ing.size(); i++) { ;
+            if (!ing.get(i).getText().toString().isEmpty()) {
                 dbManager.addIngredient(ing.get(i).getText().toString());
                 dbManager.addContiene(name.getText().toString(), ing.get(i).getText().toString());
             }

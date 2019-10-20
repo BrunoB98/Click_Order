@@ -31,7 +31,7 @@ public class DeleteFragment extends Fragment {
         SearchView searchView = (SearchView) view.findViewById(R.id.search_bar);
        /* searchView.setSuggestionsAdapter();
         searchView.getSuggestionsAdapter()*/
-        return view;
+       return view;
     }
 
     @Override
