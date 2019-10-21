@@ -1,4 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OOPproject</string>
+    <string name="partita_iva">Partita IVA</string>
+    <string name="about_business">Generalità</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="add">AGGIUNGI</string>
+    <string name="add_cat">AGGIUNGI CATEGORIA</string>
+    <string name="add_new_cat">AGGIUNGI NUOVA CATEGORIA</string>
+    <string name="add_new_product">AGGIUNGI NUOVO PRODOTTO</string>
+    <string name="add_to_database">AGGIUNGI AL DATABASE</string>
+    <string name="address">Indirizzo</string>
+    <string name="business_name">Nome attività</string>
+    <string name="delete_cat">ELIMINA CATEGORIA</string>
+    <string name="delete_category">ELIMINA CATEGORIA</string>
+    <string name="delete_product">ELIMINA PRODOTTO</string>
+    <string name="insert_cat">Inserisci la categoria da aggiungere</string>
+    <string name="insert_ingredient_1">Inserisci  ingrediente 1</string>
+    <string name="insert_ingredient_2">Inserisci ingrediente 2</string>
+    <string name="insert_ingredient_3">Inserisci ingrediente 3</string>
+    <string name="insert_ingredient_4">Inserisci ingrediente 4</string>
+    <string name="insert_ingredient_5">Inserisci ingrediente 5</string>
+    <string name="insert_prod_name">Inserisci il nome del prodotto</string>
+    <string name="insert_prod_price">Insersci il prezzo</string>
+    <string name="language">Lingua</string>
+    <string name="manage_category">Gestisci categorie</string>
+    <string name="menu_contacts">Contatti utili</string>
+    <string name="menu_financial">Riassunto finanziario</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_manage_products">Gestisci prodotti</string>
+    <string name="menu_order_history">Cronologia ordini</string>
+    <string name="menu_send">Invia</string>
+    <string name="modify">MODIFICA</string>
+    <string name="modify_product">MODIFICA PRODOTTO</string>
+    <string name="order_summary">RIEPILOGO ORDINE</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="payment">Pagamenti accettati</string>
+    <string name="reset">Reset</string>
+    <string name="select_cat">Seleziona la categoria da eliminare</string>
+    <string name="signature_title">Firma</string>
+    <string name="Style">Stile</string>
+    <string name="reply_title">Risposta predefinita</string>
+    <string name="title_activity_settings">Impostazioni</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifiche</string>
+    <string name="title_product_detail">Dettagli prodotto</string>
+    <string name="title_product_list">Prodotti</string>
+    <string name="total">TOTALE</string>
+    <string name="view_cat">VISUALIZZA CATEGORIE</string>
+    <string name="view_product">VISUALIZZA PRODOTTI</string>
+    <string name="OK">SI</string>
+    <string name="CANCEL">NO</string>
+    <string name="attention">ATTENZIONE</string>
+    <string name="alert_message">Cancellando la categoria si cancelleranno anche i rispettivi prodotti. Proseguire?</string>
+    <string name="deletedcat">CATEGORIA ELIMINATA</string>
+
+
 </resources>

@@ -1,9 +1,14 @@
 package com.example.oopproject.ManageCateg;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.oopproject.AppCompatProject;
 import com.example.oopproject.MainActivity;
 import com.example.oopproject.R;
@@ -11,6 +16,7 @@ import com.example.oopproject.R;
 public class ManageCategories extends AppCompatProject {
     public FragmentManager fm = getSupportFragmentManager();
     public Fragment fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,7 @@ public class ManageCategories extends AppCompatProject {
 
 
     public void setFragment(View view) {
+
         switch(view.getId()) {
             case R.id.add_category_button:
                 fragment = new AddCategoryFragment();

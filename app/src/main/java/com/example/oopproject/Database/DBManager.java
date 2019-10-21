@@ -111,6 +111,10 @@ public class DBManager {
         db.insert(PRODOTTO, null, cv);
     }
 
+    public void deleteProdCat(String categoryName) {
+        db.delete(PRODOTTO, "prodotto.nomec ='" + categoryName.toUpperCase() + "'", null);
+    }
+
 
     /* aggiunta in tabella contiene dato prodotto e ingrediente */
     public void addContiene(String productName, String ingredientName) {
@@ -168,7 +172,6 @@ public class DBManager {
                  strings.add(c.getString(nomeiIndex));
              } while(c.moveToNext());
          }
-         System.out.println(strings);
          return strings;
     }
 
