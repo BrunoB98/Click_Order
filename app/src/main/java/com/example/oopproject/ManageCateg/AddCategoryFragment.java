@@ -33,8 +33,10 @@ public class AddCategoryFragment extends Fragment {
         add_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!category_name.getText().toString().isEmpty()) {
                     dbManager.addCategory(category_name.getText().toString());
                     category_name.setText("");
+                }
             }
         });
         return view;
