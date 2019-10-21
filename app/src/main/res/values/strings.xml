@@ -72,4 +72,5 @@
     <string name="partita_iva">Partita IVA</string>
     <string name="address">Address</string>
     <string name="payment">Payment accepted</string>
+    <string name="insert_ingredient">insert_ingredient</string>
 </resources>

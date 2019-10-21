@@ -23,4 +23,5 @@
         app:key="payment"
         app:title="@string/payment"
         app:useSimpleSummaryProvider="true" />
+
 </PreferenceScreen>
