@@ -41,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DB_PRODOTTO = "CREATE TABLE IF NOT EXISTS prodotto (idp integer primary key autoincrement, nomep varchar(50) unique, prezzo float not null, nomec varchar(50), foreign key (nomec) references categoria);";
     static final String DB_CONTIENE = "CREATE TABLE IF NOT EXISTS contiene (nomei varchar(50), idp integer, foreign key (nomei) references ingrediente, foreign key (idp) references prodotto, primary key (nomei, idp));";
     static final String DB_DI = "CREATE TABLE IF NOT EXISTS di (ido integer, idp integer, foreign key (ido) references ordine, foreign key (idp) references prodotto, primary key (idp, ido));";
-    static final String DB_CATEGORIA = "CREATE TABLE IF NOT EXISTS categoria (nomec varchar(50) primary key);";
+    static final String DB_CATEGORIA = "CREATE TABLE IF NOT EXISTS categoria (nomec varchar(50) primary key );";
 
 
     public DatabaseHelper(Context context) {
@@ -63,12 +63,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-           /* ContentValues c = new ContentValues();
-
-            c.put("nomep", "Margherita");
-            c.put("prezzo", "6.00");
-            c.put("nomec", "pizze");
-            db.insert(PRODOTTO, null, c);*/
     }
 
     @Override

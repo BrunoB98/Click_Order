@@ -1,4 +1,6 @@
 package com.example.oopproject.ManageCateg;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.oopproject.R;
 
@@ -21,6 +24,7 @@ public class DeleteCategoryFragment extends Fragment {
     TextView category_sel;
     Spinner categories;
     ArrayAdapter<String> adapter;
+    AlertDialog.Builder alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,9 +41,27 @@ public class DeleteCategoryFragment extends Fragment {
         delete_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbManager.deleteCategory(categories.getSelectedItem().toString());
-                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, dbManager.viewCategory());
-                categories.setAdapter(adapter);
+                alertDialog = new AlertDialog.Builder(getContext());
+                alertDialog.setTitle(R.string.attention);
+                alertDialog.setMessage(R.string.alert_message);
+                alertDialog.setIcon(R.drawable.ic_menu_camera);
+                alertDialog.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getContext(), R.string.deletedcat, Toast.LENGTH_SHORT).show();
+                        dbManager.deleteCategory(categories.getSelectedItem().toString());
+                        dbManager.deleteProdCat(categories.getSelectedItem().toString());
+                        adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, dbManager.viewCategory());
+                        categories.setAdapter(adapter);
+
+                    }
+                });
+                alertDialog.setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {}
+                });
+                alertDialog.show();
+
             }
         });
         return view;

@@ -18,13 +18,13 @@
 
     <SwitchPreferenceCompat
         app:key="sync"
-        app:title="@string/sync_title" />
+        app:title="SYNC TITLE" />
 
     <SwitchPreferenceCompat
         app:dependency="sync"
         app:key="attachment"
-        app:summaryOff="@string/attachment_summary_off"
-        app:summaryOn="@string/attachment_summary_on"
-        app:title="@string/attachment_title" />
+        app:summaryOff="FANCULO"
+        app:summaryOn="CAZZO"
+        app:title="CULO" />
 
 </PreferenceScreen>
