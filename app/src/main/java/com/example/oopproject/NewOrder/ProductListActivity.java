@@ -76,6 +76,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
         recyclerView.setAdapter(adapter);
     }
 
+
     /* Nested static class to manage the RecyclerView */
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
