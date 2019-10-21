@@ -1,5 +1,7 @@
 package com.example.oopproject.NewOrder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.R;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.example.oopproject.AppCompatProjectOrder.order;
@@ -26,6 +29,7 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
     SimpleItemRecyclerViewAdapter2(List<Product> items) {
         mValues = items;
     }
+
 
     public static View.OnClickListener remove = new View.OnClickListener() {
         @Override

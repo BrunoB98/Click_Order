@@ -32,9 +32,7 @@ public class DeleteCategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_delete_category, container, false);
 
         delete_category = view.findViewById(R.id.delete_category_button);
-        //delete_category.setTextSize(TypedValue.COMPLEX_UNIT_PX, (float)0.2);
         category_sel = view.findViewById(R.id.category_selection);
-        //category_sel.setTextSize(TypedValue.COMPLEX_UNIT_PX, (float) 0.2);
         categories = view.findViewById(R.id.prod_cat);
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, dbManager.viewCategory());
         categories.setAdapter(adapter);
@@ -44,7 +42,7 @@ public class DeleteCategoryFragment extends Fragment {
                 alertDialog = new AlertDialog.Builder(getContext());
                 alertDialog.setTitle(R.string.attention);
                 alertDialog.setMessage(R.string.alert_message);
-                alertDialog.setIcon(R.drawable.ic_menu_camera);
+                alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
                 alertDialog.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

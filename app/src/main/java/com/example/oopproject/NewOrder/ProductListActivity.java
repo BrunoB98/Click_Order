@@ -1,6 +1,9 @@
 package com.example.oopproject.NewOrder;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 
+import android.text.method.CharacterPickerDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +33,7 @@ import com.example.oopproject.Dummy.*;
 import com.example.oopproject.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProductListActivity extends AppCompatProjectOrder {
@@ -42,6 +47,8 @@ public class ProductListActivity extends AppCompatProjectOrder {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
+
+
         spin = findViewById(R.id.spin_categ);
         goSearch = findViewById(R.id.go_search);
        // setSupportActionBar(spin);
@@ -77,6 +84,8 @@ public class ProductListActivity extends AppCompatProjectOrder {
     }
 
 
+
+
     /* Nested static class to manage the RecyclerView */
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
@@ -92,6 +101,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
                 Toast.makeText(view.getContext(), "Added to order", Toast.LENGTH_SHORT).show();
             }
         };
+
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,14 +149,100 @@ public class ProductListActivity extends AppCompatProjectOrder {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            Product p = mValues.get(position);
+            final Product p = mValues.get(position);
+            p.setProductIngredients(dbManager.viewProductDetails(p));
             holder.mContentView.setText(p.getName());
             holder.mPriceView.setText(p.getPrice().toString() + "$");
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
             holder.bt_add.setTag(position);
             holder.bt_add.setOnClickListener(addToOrder);
+            holder.bt_modify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Build an AlertDialog
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    final String str[] = new String[p.ingredients.size()];
+                    // Boolean array for initial selected items
+                    final boolean[] checked = new boolean[p.ingredients.size()];
+                    for (int i=0; i<p.ingredients.size(); i++){
+                        checked[i]=true;
+                        str[i]= (String) p.ingredients.get(i);
+                    }
+                    // Set multiple choice items for alert dialog
+                /*
+                    AlertDialog.Builder setMultiChoiceItems(CharSequence[] items, boolean[]
+                    checkedItems, DialogInterface.OnMultiChoiceClickListener listener)
+                        Set a list of items to be displayed in the dialog as the content,
+                        you will be notified of the selected item via the supplied listener.
+                 */
+                /*
+                    DialogInterface.OnMultiChoiceClickListener
+                    public abstract void onClick (DialogInterface dialog, int which, boolean isChecked)
 
+                        This method will be invoked when an item in the dialog is clicked.
+
+                        Parameters
+                        dialog The dialog where the selection was made.
+                        which The position of the item in the list that was clicked.
+                        isChecked True if the click checked the item, else false.
+                 */
+
+                    builder.setMultiChoiceItems(str, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                            // Update the current focused item's checked status
+                            checked[which] = isChecked;
+
+                            // Get the current focused item
+                            String currentItem = p.ingredients.get(which);
+
+                        }
+                    });
+
+                    // Specify the dialog is not cancelable
+                    builder.setCancelable(false);
+
+                    // Set a title for alert dialog
+                    builder.setTitle("Your preferred colors?");
+
+                    // Set the positive/yes button click listener
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Do something when click positive button
+                           /* tv.setText("Your preferred colors..... \n");
+                            for (int i = 0; i<checkedColors.length; i++){
+                                boolean checked = checkedColors[i];
+                                if (checked) {
+                                    tv.setText(tv.getText() + colorsList.get(i) + "\n");
+                                }
+                            }*/
+                        }
+                    });
+
+                    // Set the negative/no button click listener
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Do something when click the negative button
+                        }
+                    });
+
+                    // Set the neutral/cancel button click listener
+                    builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Do something when click the neutral button
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    // Display the alert dialog on interface
+                    dialog.show();
+                }
+            });
         }
 
         @Override
@@ -158,6 +254,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
             final TextView mContentView;
             final TextView mPriceView;
             Button bt_add;
+            Button bt_modify;
 
 
 
@@ -166,6 +263,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
                 mContentView = (TextView) view.findViewById(R.id.prod_name);
                 mPriceView = (TextView) view.findViewById(R.id.price);
                 bt_add = (Button) view.findViewById(R.id.Add_button);
+                bt_modify = (Button) view.findViewById(R.id.Modify);
             }
         }
     }
