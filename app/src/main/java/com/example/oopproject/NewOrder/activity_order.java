@@ -20,6 +20,12 @@ public class activity_order extends AppCompatProjectOrder {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+
+        order.printOrder();
+
+
+
         tot = findViewById(R.id.total);
         tot.setText(order.total.toString() + " $");
         recyclerView = findViewById(R.id.summary_order);

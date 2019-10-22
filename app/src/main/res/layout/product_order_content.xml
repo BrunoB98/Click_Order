@@ -3,18 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".NewOrder.ProductListActivity"
+    tools:context=".NewOrder.activity_order"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/prod_name"
+        android:id="@+id/prod_name_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/price_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.7"
@@ -22,14 +22,20 @@
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <Button
-        android:id="@+id/Add_button"
+        android:id="@+id/Add_button_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.65"
         android:clickable="true"
-        android:text="@string/add"
+        android:text="@string/remove"
         android:textSize="11sp" />
 
-
+    <Button
+        android:id="@+id/Modify_button_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.65"
+        android:text="@string/modify"
+        android:textSize="11sp" />
 
 </LinearLayout>

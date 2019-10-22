@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.R;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.example.oopproject.AppCompatProject.dbManager;
 import static com.example.oopproject.AppCompatProjectOrder.order;
 import static com.example.oopproject.NewOrder.activity_order.adapter;
 import static com.example.oopproject.NewOrder.activity_order.tot;
@@ -44,30 +46,36 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_list_content, parent, false);
+                .inflate(R.layout.product_order_content, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final Product p = mValues.get(position);
+        final List<String> ing = new ArrayList<String>(dbManager.viewProductDetails(p));
+        final String str[] = new String[ing.size()];
+        final boolean[] checked = new boolean[ing.size()];
+        for (int i=0; i<ing.size(); i++){
+            checked[i]=true;
+            str[i]= (String) ing.get(i);
+        }
+
         holder.mContentView.setText(p.getName());
         holder.mPriceView.setText(p.getPrice().toString() + "$");
         holder.itemView.setTag(mValues.get(position));
         holder.bt.setTag(position);
         holder.bt.setOnClickListener(remove);
+        holder.bt_modify.setTag(position);
         holder.bt_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final View vi = v;
                 // Build an AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                final String str[] = new String[p.ingredients.size()];
+               // Integer dim = order.list.get(position).ingredients.size();
                 // Boolean array for initial selected items
-                final boolean[] checked = new boolean[p.ingredients.size()];
-                for (int i=0; i<p.ingredients.size(); i++){
-                    checked[i]=true;
-                    str[i]= (String) p.ingredients.get(i);
-                }
+
                 // Set multiple choice items for alert dialog
                 /*
                     AlertDialog.Builder setMultiChoiceItems(CharSequence[] items, boolean[]
@@ -93,9 +101,8 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
 
                         // Update the current focused item's checked status
                         checked[which] = isChecked;
-
                         // Get the current focused item
-                        String currentItem = p.ingredients.get(which);
+                       // String currentItem = ing.get(which);
 
                     }
                 });
@@ -104,21 +111,25 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
                 builder.setCancelable(false);
 
                 // Set a title for alert dialog
-                builder.setTitle("Your preferred colors?");
+                builder.setTitle(R.string.modify_ing);
 
                 // Set the positive/yes button click listener
-                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Do something when click positive button
-                           /* tv.setText("Your preferred colors..... \n");
-                            for (int i = 0; i<checkedColors.length; i++){
-                                boolean checked = checkedColors[i];
-                                if (checked) {
-                                    tv.setText(tv.getText() + colorsList.get(i) + "\n");
-                                }
-                            }*/
+                        for(int i = 0; i < ing.size(); i++) {
+                            if(checked[i] == false) {
+                                ing.remove(i);
+                              /*  String s = p.ingredients.get(i).toString();
+                                order.list.get((int) vi.getTag()).removeIngredient(s);*/
+                              //  System.out.println("prodotto: " + order.list.get((int) vi.getTag()).toString());
+                            }
+                        }
+                        order.list.get(position).setProductIngredients(ing);
+                        order.printOrder();
                     }
+
                 });
 
                 // Set the negative/no button click listener
@@ -151,11 +162,10 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
 
         ViewHolder(View view) {
             super(view);
-            mContentView = (TextView) view.findViewById(R.id.prod_name);
-            mPriceView = (TextView) view.findViewById(R.id.price);
-            bt = (Button) view.findViewById(R.id.Add_button);
-            bt.setText("REMOVE");
-            bt_modify = view.findViewById(R.id.Modify);
+            mContentView = (TextView) view.findViewById(R.id.prod_name_order);
+            mPriceView = (TextView) view.findViewById(R.id.price_order);
+            bt = (Button) view.findViewById(R.id.Add_button_order);
+            bt_modify = view.findViewById(R.id.Modify_button_order);
         }
 
     }

@@ -58,6 +58,11 @@
     <string name="attention">ATTENZIONE</string>
     <string name="alert_message">Cancellando la categoria si cancelleranno anche i rispettivi prodotti. Proseguire?</string>
     <string name="deletedcat">CATEGORIA ELIMINATA</string>
+    <string name="remove">RIMUOVI</string>
+    <string name="insert_ingredient">Inserisci ingrediente</string>
+    <string name="confirmation_order">Conferma Ordine</string>
+    <string name="modify_ing">Modifica ingredienti</string>
+    <string name="confirm">CONFERMA</string>
 
 
 </resources>

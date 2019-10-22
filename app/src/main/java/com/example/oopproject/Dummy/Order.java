@@ -43,5 +43,8 @@ public class Order {
         total = 0.0;
     }
 
-
+    public void printOrder() {
+        System.out.println(list.toString());
+        System.out.println(total.toString());
+    }
 }

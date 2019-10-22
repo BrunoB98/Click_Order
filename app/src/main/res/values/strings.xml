@@ -47,6 +47,9 @@
     <string name="deletedcat">CATEGORY DELETED</string>
     <string name="insert_ingredient">insert_ingredient</string>
     <string name="confirmation_order">Confirmation order</string>
+    <string name="remove">REMOVE </string>
+    <string name="modify_ing">Modify ingredients</string>
+    <string name="confirm">CONFIRM</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

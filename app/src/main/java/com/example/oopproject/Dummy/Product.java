@@ -21,8 +21,9 @@ public class Product implements Comparable<Product> {
     /* setta gli ingredienti sel prodotto ma non ha influenza sul database cosa necessaria per modifiche dei prodotto relative ad uno
     specifico ordine*/
     public void setProductIngredients (List<String> ingreds) {
+        ingredients.clear();
         for (String s : ingreds) {
-            ingredients.add(s);
+            this.ingredients.add(s);
         }
     }
 
@@ -54,6 +55,14 @@ public class Product implements Comparable<Product> {
                 ", category=" + category +
                 ", ingredients=" + ingredients +
                 '}';
+    }
+
+    public void removeIngredient(String ingredientName) {
+        for(int i = 0; i < ingredients.size(); i++) {
+            if(this.ingredients.get(i).equals(ingredientName)) {
+                this.ingredients.remove(i);
+            }
+        }
     }
 
     @Override
