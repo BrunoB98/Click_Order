@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="10dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewOrder.ConfirmationOrder">
+    <TextView
+        android:id="@+id/text_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:shadowColor="#00DB4040"
+        android:text="@string/confirmation_order"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="serif" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/confirmation_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.15"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".NewOrder.activity_order"
+        tools:listitem="@layout/product_list_content"/>

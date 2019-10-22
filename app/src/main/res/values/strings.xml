@@ -45,11 +45,8 @@
     <string name="OK">OK</string>
     <string name="CANCEL">CANCEL</string>
     <string name="deletedcat">CATEGORY DELETED</string>
-
-
-
-
-
+    <string name="insert_ingredient">insert_ingredient</string>
+    <string name="confirmation_order">Confirmation order</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -71,5 +68,5 @@
     <string name="partita_iva">VAT number</string>
     <string name="address">Address</string>
     <string name="payment">Payment accepted</string>
-    <string name="insert_ingredient">insert_ingredient</string>
+
 </resources>

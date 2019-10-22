@@ -208,7 +208,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
                     builder.setTitle("Your preferred colors?");
 
                     // Set the positive/yes button click listener
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // Do something when click positive button
@@ -223,18 +223,10 @@ public class ProductListActivity extends AppCompatProjectOrder {
                     });
 
                     // Set the negative/no button click listener
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // Do something when click the negative button
-                        }
-                    });
-
-                    // Set the neutral/cancel button click listener
-                    builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Do something when click the neutral button
                         }
                     });
 
