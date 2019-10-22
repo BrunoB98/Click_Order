@@ -23,7 +23,7 @@ public class ConfirmationOrder extends AppCompatProjectOrder {
         setContentView(R.layout.activity_confirmatio_order);
         tot = findViewById(R.id.total);
         tot.setText(order.total.toString() + " $");
-        recyclerView = findViewById(R.id.summary_order);
+        recyclerView = findViewById(R.id.confirmation_order);
         assert recyclerView != null;
         adapter = new SimpleAdapterConfirmation(order.list);
         setupRecyclerView((RecyclerView) recyclerView);

@@ -33,21 +33,10 @@ public class SimpleAdapterConfirmation extends RecyclerView.Adapter<SimpleAdapte
         mValues = items;
     }
 
-
-    public static View.OnClickListener remove = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            order.remove(order.list.get((int)view.getTag()));
-            adapter.notifyDataSetChanged();
-            tot.setText(order.total.toString() + " $");
-            Toast.makeText(view.getContext(), "Removed to order", Toast.LENGTH_SHORT).show();
-        }
-    };
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_list_content, parent, false);
+                .inflate(R.layout.confirmation_order_line, parent, false);
         return new ViewHolder(view);
     }
 
@@ -83,8 +72,8 @@ public class SimpleAdapterConfirmation extends RecyclerView.Adapter<SimpleAdapte
 
         ViewHolder(View view) {
             super(view);
-            mContentView = (TextView) view.findViewById(R.id.prod_name);
-            mPriceView = (TextView) view.findViewById(R.id.price);
+            mContentView = (TextView) view.findViewById(R.id.confirm_pname);
+            mPriceView = (TextView) view.findViewById(R.id.confirm_pprice);
             modification = (TextView) view.findViewById(R.id.modification);
         }
 

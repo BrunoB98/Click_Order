@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,12 +21,6 @@ public class activity_order extends AppCompatProjectOrder {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-
-
-        order.printOrder();
-
-
-
         tot = findViewById(R.id.total);
         tot.setText(order.total.toString() + " $");
         recyclerView = findViewById(R.id.summary_order);
@@ -40,5 +35,8 @@ public class activity_order extends AppCompatProjectOrder {
         recyclerView.setAdapter(adapter);
     }
 
+    public void goToConfirmation (View view) {
+        startActivity(new Intent(this, ConfirmationOrder.class));
+    }
 
 }

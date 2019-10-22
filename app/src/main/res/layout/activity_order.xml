@@ -43,10 +43,11 @@
         <TextView
             android:id="@+id/TextTotal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_weight="0.4"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/total"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -54,13 +55,22 @@
         <EditText
             android:id="@+id/total"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
             android:ems="10"
-            android:gravity="right"
+            android:gravity="center"
             android:inputType="numberDecimal"
-            android:maxLength="4"
+            android:maxLength="8"
             android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/go_confirmation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:onClick="goToConfirmation"
+            android:rotation="180"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
 
     </LinearLayout>
 </LinearLayout>
