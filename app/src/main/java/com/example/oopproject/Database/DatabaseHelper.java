@@ -36,11 +36,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     static final int DATABASE_VERSIONE = 1;
 
-    static final String DB_ORDINE = " CREATE TABLE IF NOT EXISTS ordine ( ido integer primary key autoincrement,tavolo integer not null unique, npersone integer not null, totale float, active int );" ;
+    static final String DB_ORDINE = " CREATE TABLE IF NOT EXISTS ordine ( ido integer primary key autoincrement, totale float);" ;
     static final String DB_INGREDIENTE = " CREATE TABLE IF NOT EXISTS ingrediente (nomei varchar(50) primary key);";
     static final String DB_PRODOTTO = "CREATE TABLE IF NOT EXISTS prodotto (idp integer primary key autoincrement, nomep varchar(50) unique, prezzo float not null, nomec varchar(50), foreign key (nomec) references categoria);";
     static final String DB_CONTIENE = "CREATE TABLE IF NOT EXISTS contiene (nomei varchar(50), idp integer, foreign key (nomei) references ingrediente, foreign key (idp) references prodotto, primary key (nomei, idp));";
-    static final String DB_DI = "CREATE TABLE IF NOT EXISTS di (ido integer, idp integer, foreign key (ido) references ordine, foreign key (idp) references prodotto, primary key (idp, ido));";
+    static final String DB_DI = "CREATE TABLE IF NOT EXISTS di (id integer primary key autoincrement, ido integer, idp integer, foreign key (ido) references ordine, foreign key (idp) references prodotto );";
     static final String DB_CATEGORIA = "CREATE TABLE IF NOT EXISTS categoria (nomec varchar(50) primary key );";
 
 

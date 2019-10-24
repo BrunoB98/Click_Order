@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.oopproject.Dummy.Order;
 import com.example.oopproject.Dummy.Product;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class DBManager {
     static final String CONTIENE_IDP = "idp";
     static final String CONTIENE_NOMEI = "nomei";
     static final String INGREDIENTE_NOMEI = "nomei";
+    static final String DI_ID = "id";
     static final String DI_IDO = "ido";
     static final String DI_IDP = "idp";
     static final String ORDINE_IDO = "ido";
@@ -86,6 +88,17 @@ public class DBManager {
             } while (c.moveToNext());
         }
         return list;
+    }
+
+    public Product searchProductById(int id) {
+        Cursor c  = db.rawQuery("SELECT * FROM prodotto WHERE idp = " + id, null);
+        int idIndex = c.getColumnIndex("idp");
+        int nomepIndex = c.getColumnIndex("nomep");
+        int prezzoIndex = c.getColumnIndex("prezzo");
+        int nomecIndex = c.getColumnIndex("nomec");
+        c.moveToFirst();
+        Product product = new Product(c.getInt(id), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
+        return product;
     }
 
     public List<Product> viewAllProducts() {
@@ -192,17 +205,50 @@ public class DBManager {
 
 
     /* FUNZIONI ORDINE */
-    public void addToOrder(int productId, int orderId, int tableNumber, int personNumber ) {
-        ContentValues c_di = new ContentValues();
-        ContentValues c_ordine = new ContentValues();
-        c_di.put(DI_IDP, productId);
-        c_di.put(DI_IDO, orderId);
-        c_ordine.put(ORDINE_IDO, orderId);
-        c_ordine.put(ORDINE_TAVOLO, tableNumber);
-        c_ordine.put(ORDINE_NPERSONE, personNumber);
-        db.insert(DI, null, c_di);
-        db.insert(ORDINE, null, c_ordine);
+
+    public void addOrder(Order order) {
+        ContentValues cv = new ContentValues();
+        cv.put(ORDINE_TOTALE, order.total);
+        int id =(int) db.insert(ORDINE, null, cv);
+        System.out.println("Id: " + id);
+        ContentValues cv2 = new ContentValues();
+        for (int i = 0; i < order.list.size(); i++) {
+            cv2.put(DI_IDO, id);
+            cv2.put(DI_IDP, order.list.get(i).id);
+            db.insert(DI, null, cv2);
+        }
+
     }
+
+    public List<Order> viewAllOrder() {
+        List<Order> orderList = new ArrayList<Order>();
+        Cursor c = db.rawQuery("SELECT * FROM ordine INNER JOIN di ON ordine.ido = di.ido", null);
+        int idoIndex = c.getColumnIndex("ido");
+        int totIndex = c.getColumnIndex("totale");
+        int idIndex = c.getColumnIndex("id");
+        int idpIndex = c.getColumnIndex("idp");
+        Product p;
+        Order o = new Order();
+        if(c.moveToFirst()) {
+            int id_current_order = c.getInt(idoIndex);
+
+            do {
+
+                if(c.getInt(idoIndex) == id_current_order) {
+                    p = searchProductById(c.getInt(idpIndex));
+                    o.add(p);
+                }
+                else {
+                    id_current_order = c.getInt(idoIndex);
+                    orderList.add(o);
+                    o  = new Order();
+                }
+            }while (c.moveToNext());
+
+        }
+        return orderList;
+    }
+
 
 
     /* FUNZIONI INGREDIENTI */

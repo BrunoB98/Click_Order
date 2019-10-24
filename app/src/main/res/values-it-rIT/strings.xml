@@ -66,6 +66,7 @@
     <string name="search_prod">Cerca i prodotti...</string>
     <string name="delete_prod">ELIMINA</string>
     <string name="prod_removed">PRODOTTO RIMOSSO</string>
+    <string name="alert_reset">Stai cancellando tutti i record presenti nel database. Proseguire?</string>
 
 
 </resources>
