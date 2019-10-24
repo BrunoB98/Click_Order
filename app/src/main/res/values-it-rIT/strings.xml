@@ -21,7 +21,7 @@
     <string name="insert_ingredient_4">Inserisci ingrediente 4</string>
     <string name="insert_ingredient_5">Inserisci ingrediente 5</string>
     <string name="insert_prod_name">Inserisci il nome del prodotto</string>
-    <string name="insert_prod_price">Insersci il prezzo</string>
+    <string name="insert_prod_price">Inserisci il prezzo</string>
     <string name="language">Lingua</string>
     <string name="manage_category">Gestisci categorie</string>
     <string name="menu_contacts">Contatti utili</string>
@@ -63,6 +63,9 @@
     <string name="confirmation_order">Conferma Ordine</string>
     <string name="modify_ing">Modifica ingredienti</string>
     <string name="confirm">CONFERMA</string>
+    <string name="search_prod">Cerca i prodotti...</string>
+    <string name="delete_prod">ELIMINA</string>
+    <string name="prod_removed">PRODOTTO RIMOSSO</string>
 
 
 </resources>

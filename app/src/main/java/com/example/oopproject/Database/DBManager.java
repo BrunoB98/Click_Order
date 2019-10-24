@@ -136,7 +136,7 @@ public class DBManager {
     }
 
     public List<Product> searchProduct(String name) {
-        Cursor c  = db.rawQuery("SELECT * FROM prodotto WHERE prodotto.nomep LIKE '" + name.toUpperCase() + "%'", null);
+        Cursor c  = db.rawQuery("SELECT * FROM prodotto WHERE prodotto.nomep LIKE '%" + name.toUpperCase() + "%'", null);
         int idIndex = c.getColumnIndex("idp");
         int nomeIndex = c.getColumnIndex("nomep");
         int prezzoindex = c.getColumnIndex("prezzo");
@@ -174,9 +174,20 @@ public class DBManager {
          }
          return strings;
     }
+    public ArrayList<String> viewProductDetails(int id) {
+        Cursor c = db.rawQuery("SELECT nomei FROM contiene WHERE contiene.idp = " + id, null);
+        int nomeiIndex = c.getColumnIndex("nomei");
+        ArrayList<String> strings = new ArrayList<String>();
+        if(c.moveToFirst()) {
+            do {
+                strings.add(c.getString(nomeiIndex));
+            } while(c.moveToNext());
+        }
+        return strings;
+    }
 
-    public void deleteProduct(int productId, String productName) {
-        db.delete(PRODOTTO, PRODOTTO_NOME + " = '" + productName.toUpperCase() + "'", null);
+    public void deleteProduct(Product p) {
+        db.delete(PRODOTTO, PRODOTTO_NOME + " = '" + p.getName().toUpperCase() + "'", null);
     }
 
 

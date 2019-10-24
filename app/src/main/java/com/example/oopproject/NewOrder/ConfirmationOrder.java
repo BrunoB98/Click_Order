@@ -20,7 +20,7 @@ public class ConfirmationOrder extends AppCompatProjectOrder {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirmatio_order);
+        setContentView(R.layout.activity_confirmation_order);
         tot = findViewById(R.id.total);
         tot.setText(order.total.toString() + " $");
         recyclerView = findViewById(R.id.confirmation_order);

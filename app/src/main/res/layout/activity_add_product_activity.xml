@@ -48,7 +48,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:hint="Insert product price"
+            android:hint="@string/insert_prod_price"
             android:inputType="numberDecimal"
             android:textSize="25sp" />
 

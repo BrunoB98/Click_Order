@@ -29,15 +29,6 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/Modify_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="setFragment"
-            android:text="@string/modify_product"
-            android:textSize="24sp" />
-
-        <Button
             android:id="@+id/View_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

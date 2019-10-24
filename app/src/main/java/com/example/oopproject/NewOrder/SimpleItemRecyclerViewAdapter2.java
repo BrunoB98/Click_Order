@@ -54,6 +54,7 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Product p = mValues.get(position);
         final List<String> ing = new ArrayList<String>(dbManager.viewProductDetails(p));
+        order.list.get(position).setProductIngredients(ing);
         final String str[] = new String[ing.size()];
         final boolean[] checked = new boolean[ing.size()];
         for (int i=0; i<ing.size(); i++){

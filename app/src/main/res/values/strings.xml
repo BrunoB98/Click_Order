@@ -50,6 +50,11 @@
     <string name="remove">REMOVE </string>
     <string name="modify_ing">Modify ingredients</string>
     <string name="confirm">CONFIRM</string>
+    <string name="search_prod">Type to search products...</string>
+    <string name="delete_prod">DELETE</string>
+    <string name="prod_removed">PRODUCT REMOVED</string>
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

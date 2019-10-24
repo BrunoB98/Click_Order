@@ -36,10 +36,6 @@ public class ManageProducts extends AppCompatActivity {
             case R.id.Add_button:
                 startActivity(new Intent(this, Add_product_activity.class));
                 break;
-            case R.id.Modify_button:
-                fragment = new ModifyFragment();
-                fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
-                break;
             case R.id.Delete_button:
                 fragment = new DeleteFragment();
                 fm.beginTransaction().replace(R.id.Frag_panel, fragment).commit();
@@ -53,5 +49,7 @@ public class ManageProducts extends AppCompatActivity {
         }
 
     }
+
+
 
 }
