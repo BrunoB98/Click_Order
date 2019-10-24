@@ -48,15 +48,15 @@ public class SimpleAdapterConfirmation extends RecyclerView.Adapter<SimpleAdapte
         holder.itemView.setTag(mValues.get(position));
         String strOK = "Ingredienti presenti: ", strNO = "Senza: ";
         List<String> list = dbManager.viewProductDetails(p);
-       /* for(int i = 0; i<list.size(); i++ ) {
-            if (p.ingredients.contains(list.get(i))) {
-                strOK = list.get(i) + ", "
+        for(int i = 0; i < p.ingredients.size(); i++ ) {
+            if (p.checked[i] == true) {
+                strOK = strOK + list.get(i) + ", ";
             }
             else {
-                strNO = strNO + list.get(i)
+                strNO = strNO + list.get(i) +  ", ";
             }
         }
-        holder.modification.setText();*/
+        holder.modification.setText(strOK + '\n' + strNO);
     }
 
     @Override

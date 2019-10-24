@@ -1,10 +1,8 @@
 package com.example.oopproject.NewOrder;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +23,7 @@ public class ConfirmationOrder extends AppCompatProjectOrder {
         tot.setText(order.total.toString() + " $");
         recyclerView = findViewById(R.id.confirmation_order);
         assert recyclerView != null;
+        order.printOrder();
         adapter = new SimpleAdapterConfirmation(order.list);
         setupRecyclerView((RecyclerView) recyclerView);
     }
