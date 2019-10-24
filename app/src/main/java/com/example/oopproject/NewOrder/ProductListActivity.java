@@ -97,7 +97,8 @@ public class ProductListActivity extends AppCompatProjectOrder {
         private final View.OnClickListener addToOrder = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                order.add(l.get((int)view.getTag()));
+                Product product = new Product(l.get((int)view.getTag()));
+                order.add(product);
                 Toast.makeText(view.getContext(), "Added to order", Toast.LENGTH_SHORT).show();
             }
         };

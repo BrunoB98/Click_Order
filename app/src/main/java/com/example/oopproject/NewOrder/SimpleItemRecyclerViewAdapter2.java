@@ -32,6 +32,49 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
         mValues = items;
     }
 
+    public static View.OnClickListener setModification = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final View vi = v;
+            final Product p2 = order.list.get((int)vi.getTag());
+            System.out.println("Questo è il prodotto: " + p2.toString());
+            final boolean[] check = new boolean[p2.ingredients.size()];
+            final String[] str = new String[p2.ingredients.size()];
+
+            for (int i = 0; i < p2.ingredients.size(); i++) {
+                check[i] = p2.checked[i];
+                str[i] = p2.ingredients.get(i);
+            }
+
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+            builder.setMultiChoiceItems(str, check, new DialogInterface.OnMultiChoiceClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                    check[which] = isChecked;
+                }
+            });
+            builder.setCancelable(false);
+            builder.setTitle(R.string.modify_ing);
+            builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do something when click positive button
+                    for(int i = 0; i < p2.ingredients.size(); i++) {
+                            order.list.get((int) vi.getTag()).checked[i] = check[i];
+                        }
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    };
+
 
     public static View.OnClickListener remove = new View.OnClickListener() {
         @Override
@@ -47,106 +90,21 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.product_order_content, parent, false);
+
         return new ViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Product p = mValues.get(position);
-        final List<String> ing = new ArrayList<String>(dbManager.viewProductDetails(p));
-        order.list.get(position).setProductIngredients(ing);
-        final String str[] = new String[ing.size()];
-        final boolean[] checked = new boolean[ing.size()];
-        for (int i=0; i<ing.size(); i++){
-            checked[i]=true;
-            str[i]= (String) ing.get(i);
-        }
-
         holder.mContentView.setText(p.getName());
         holder.mPriceView.setText(p.getPrice().toString() + "$");
         holder.itemView.setTag(mValues.get(position));
         holder.bt.setTag(position);
         holder.bt.setOnClickListener(remove);
         holder.bt_modify.setTag(position);
-        holder.bt_modify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final View vi = v;
-                // Build an AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-               // Integer dim = order.list.get(position).ingredients.size();
-                // Boolean array for initial selected items
-
-                // Set multiple choice items for alert dialog
-                /*
-                    AlertDialog.Builder setMultiChoiceItems(CharSequence[] items, boolean[]
-                    checkedItems, DialogInterface.OnMultiChoiceClickListener listener)
-                        Set a list of items to be displayed in the dialog as the content,
-                        you will be notified of the selected item via the supplied listener.
-                 */
-                /*
-                    DialogInterface.OnMultiChoiceClickListener
-                    public abstract void onClick (DialogInterface dialog, int which, boolean isChecked)
-
-                        This method will be invoked when an item in the dialog is clicked.
-
-                        Parameters
-                        dialog The dialog where the selection was made.
-                        which The position of the item in the list that was clicked.
-                        isChecked True if the click checked the item, else false.
-                 */
-
-                builder.setMultiChoiceItems(str, checked, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
-                        // Update the current focused item's checked status
-                        checked[which] = isChecked;
-                        // Get the current focused item
-                       // String currentItem = ing.get(which);
-
-                    }
-                });
-
-                // Specify the dialog is not cancelable
-                builder.setCancelable(false);
-
-                // Set a title for alert dialog
-                builder.setTitle(R.string.modify_ing);
-
-                // Set the positive/yes button click listener
-                builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do something when click positive button
-                        for(int i = 0; i < ing.size(); i++) {
-                            if(checked[i] == false) {
-                                ing.remove(i);
-                              /*  String s = p.ingredients.get(i).toString();
-                                order.list.get((int) vi.getTag()).removeIngredient(s);*/
-                              //  System.out.println("prodotto: " + order.list.get((int) vi.getTag()).toString());
-                            }
-                        }
-                        order.list.get(position).setProductIngredients(ing);
-                        order.printOrder();
-                    }
-
-                });
-
-                // Set the negative/no button click listener
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do something when click the negative button
-                    }
-                });
-
-                AlertDialog dialog = builder.create();
-                // Display the alert dialog on interface
-                dialog.show();
-            }
-        });
-
+        holder.bt_modify.setOnClickListener(setModification);
 
     }
 

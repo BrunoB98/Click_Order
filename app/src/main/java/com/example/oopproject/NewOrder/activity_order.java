@@ -27,6 +27,7 @@ public class activity_order extends AppCompatProjectOrder {
         assert recyclerView != null;
         adapter = new SimpleItemRecyclerViewAdapter2(order.list);
         setupRecyclerView((RecyclerView) recyclerView);
+        order.printOrder();
     }
 
 
