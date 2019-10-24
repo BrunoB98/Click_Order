@@ -16,15 +16,10 @@
 
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Preference
-        app:fragment="com.example.oopproject.Settings.LanguageFragment"
-        app:icon="@android:drawable/ic_menu_sort_alphabetically"
-        app:key="language_header"
-        app:title="@string/language" />
 
     <Preference
         app:fragment="com.example.oopproject.Settings.ResetFragment"
-        app:icon="@android:drawable/ic_delete"
+        app:icon="@drawable/reset"
         app:key="reset_header"
         app:title="@string/reset" />
     <Preference
@@ -34,7 +29,7 @@
         app:title="@string/Style" />
     <Preference
         app:fragment="com.example.oopproject.Settings.BusinessFragment"
-        app:icon="@android:drawable/ic_menu_info_details"
+        app:icon="@drawable/business_info"
         app:key="about_business_header"
         app:title="@string/about_business" />
 
