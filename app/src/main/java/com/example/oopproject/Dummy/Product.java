@@ -18,6 +18,7 @@ public class Product implements Comparable<Product> {
         this.ingredients = new ArrayList<String>();
     }
 
+
     /* setta gli ingredienti sel prodotto ma non ha influenza sul database cosa necessaria per modifiche dei prodotto relative ad uno
     specifico ordine*/
     public void setProductIngredients (List<String> ingreds) {
