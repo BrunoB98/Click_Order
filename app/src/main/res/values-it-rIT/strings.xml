@@ -67,6 +67,10 @@
     <string name="delete_prod">ELIMINA</string>
     <string name="prod_removed">PRODOTTO RIMOSSO</string>
     <string name="alert_reset">Stai cancellando tutti i record presenti nel database. Proseguire?</string>
+    <string name="complete_order">Ordine completato con successo! La cronologia ordini è stata aggiornata.</string>
+    <string name="pay_now">PAGA</string>
+    <string name="error_db">Non puoi continuare se non aggiungi almeno un prodotto.</string>
+    <string name="error">Errore</string>
 
 
 </resources>

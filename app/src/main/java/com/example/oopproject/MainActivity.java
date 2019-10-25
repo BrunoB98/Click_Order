@@ -1,9 +1,12 @@
 package com.example.oopproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.oopproject.Database.DBManager;
+import com.example.oopproject.Dummy.Order;
 import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.ManageCateg.ManageCategories;
 import com.example.oopproject.ManageProduct.ManageProducts;
@@ -25,6 +28,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.net.Inet4Address;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatProject
@@ -48,8 +53,10 @@ public class MainActivity extends AppCompatProject
         dbManager.open();
         dbManager.update();
         COUNT = ITEMS.size();
-        List<Product> p = dbManager.searchProduct("ama");
-        System.out.println(p.toString());
+        List<Order> order_history;
+        order_history = new ArrayList<>(dbManager.viewAllOrder());
+        System.out.println(order_history.toString());
+
     }
 
     @Override
@@ -108,16 +115,36 @@ public class MainActivity extends AppCompatProject
     }
     /* Si passa all'activity di categoria prodotti indicando quale bottono è stato toccato*/
     public void SelectOperation(View view) {
-        Intent i;
-        switch (view.getId()) {
-            case R.id.manage_product:
-                i = new Intent(this, ManageProducts.class);
-                break;
-            default:
-                i = new Intent(this, ProductListActivity.class);
-        }
-        i.putExtra("view", view.getId());
-        startActivity(i);
+            Intent i;
+            switch (view.getId()) {
+                case R.id.new_order:
+                    if (COUNT == 0) {
+                        AlertDialog.Builder alertDialog;
+                        alertDialog = new AlertDialog.Builder(this);
+                        alertDialog.setTitle(R.string.error);
+                        alertDialog.setMessage(R.string.error_db);
+                        alertDialog.setIcon(android.R.drawable.ic_delete);
+                        alertDialog.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                startActivity(new Intent(getApplicationContext(), ManageProducts.class));
+                            }
+                        });
+                        alertDialog.setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {}
+                        });
+                        alertDialog.show();
+                        return;
+                    } else {
+                        i = new Intent(this, ProductListActivity.class);
+                    }
+                    break;
+                default:
+                    i = new Intent(this, ManageProducts.class);
+            }
+            i.putExtra("view", view.getId());
+            startActivity(i);
 
-    }
+        }
 }
