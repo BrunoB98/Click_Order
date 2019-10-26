@@ -278,6 +278,12 @@ public class DBManager {
     }
 
     /* FUNZIONI CATEGORIA */
+
+    public int categoryNumber() {
+        Cursor c = db.rawQuery("SELECT * FROM categoria", null);
+        return c.getCount();
+    }
+
     public void addCategory(String categoryName) {
         ContentValues ccat = new ContentValues();
         ccat.put("nomec", categoryName.toUpperCase());

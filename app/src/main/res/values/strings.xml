@@ -45,7 +45,7 @@
     <string name="OK">OK</string>
     <string name="CANCEL">CANCEL</string>
     <string name="deletedcat">CATEGORY DELETED</string>
-    <string name="insert_ingredient">insert_ingredient</string>
+    <string name="insert_ingredient">Insert ingredient</string>
     <string name="confirmation_order">Confirmation order</string>
     <string name="remove">REMOVE </string>
     <string name="modify_ing">Modify ingredients</string>
@@ -57,6 +57,8 @@
     <string name="complete_order">Order successfully completed! The order history is updated.</string>
     <string name="error_db">You can\'t continue if you don\'t add almost a product.</string>
     <string name="error">Error</string>
+    <string name="alert_product_empty">You must insert the product name and the product price to add the product.</string>
+    <string name="alert_categories_empty">You must insert almost one category to add a product.</string>
 
 
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.oopproject.Database.DBManager;
 import com.example.oopproject.Dummy.Order;
 import com.example.oopproject.Dummy.Product;
+import com.example.oopproject.ManageCateg.AddCategoryFragment;
 import com.example.oopproject.ManageCateg.ManageCategories;
 import com.example.oopproject.ManageProduct.ManageProducts;
 
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatProject
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    /* Si passa all'activity di categoria prodotti indicando quale bottono è stato toccato*/
+    /* Si passa all'activity di categoria prodotti indicando quale bottone è stato toccato*/
     public void SelectOperation(View view) {
             Intent i;
             switch (view.getId()) {
@@ -140,11 +141,36 @@ public class MainActivity extends AppCompatProject
                         i = new Intent(this, ProductListActivity.class);
                     }
                     break;
-                default:
-                    i = new Intent(this, ManageProducts.class);
+                case R.id.manage_product:
+                    if(dbManager.categoryNumber() == 0)
+                    {
+                        AlertDialog.Builder alertDialog;
+                        alertDialog = new AlertDialog.Builder(this);
+                        alertDialog.setTitle(R.string.error);
+                        alertDialog.setMessage(R.string.alert_categories_empty);
+                        alertDialog.setIcon(android.R.drawable.ic_delete);
+                        alertDialog.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                startActivity(new Intent(getApplicationContext(), ManageCategories.class));
+                            }
+                        });
+                        alertDialog.setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {}
+                        });
+                        alertDialog.show();
+                        return;
+                    }
+                    else {
+                        i = new Intent(this, ManageProducts.class);
+                    }
+                    break;
+                    default:
+                        return;
             }
-            i.putExtra("view", view.getId());
-            startActivity(i);
+        i.putExtra("view", view.getId());
+        startActivity(i);
 
         }
 }
