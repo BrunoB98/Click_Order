@@ -71,6 +71,10 @@
     <string name="pay_now">PAGA</string>
     <string name="error_db">Non puoi continuare se non aggiungi almeno un prodotto.</string>
     <string name="error">Errore</string>
+    <string name="conf_delete_ord">L\'ordine corrente verrà annullato. Sicuro di continuare?</string>
+    <string name="cancel_order">ANNULLA ORDINE</string>
+    <string name="order_canceled">Ordine cancellato</string>
+    <string name="order_registered">Ordine registrato</string>
     <string name="alert_product_empty">Devi inserire il nome del prodotto e il prezzo per aggiungerlo.</string>
     <string name="alert_categories_empty">Devi inserire almeno una categoria per aggiungere un prodotto.</string>
 
