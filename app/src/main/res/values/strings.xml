@@ -64,7 +64,7 @@
     <string name="order_registered">Order registered</string>
     <string name="alert_product_empty">You must insert the product name and the product price to add the product.</string>
     <string name="alert_categories_empty">You must insert almost one category to add a product.</string>
-
+    <string name="delete_all">Database deleted</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

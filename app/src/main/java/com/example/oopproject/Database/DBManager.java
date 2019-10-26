@@ -31,10 +31,11 @@ public class DBManager {
     static final String ORDINE_NPERSONE = "npersone";
     static final String ORDINE_TOTALE = "totale";
     static final String CATEGORIA_NOME = "nomec";
-
+    static final String ORDINE_DATA = "datetime";
     static final String DBNAME= "TestDB";
     static final String ORDINE = "ordine";
     static final String PRODOTTO = "prodotto";
+    static final String BUSINESS = "business";
     static final String CONTIENE = "contiene";
     static final String INGREDIENTE = "ingrediente";
     static final String DI = "di";
@@ -99,6 +100,33 @@ public class DBManager {
         c.moveToFirst();
         Product product = new Product(c.getInt(id), c.getString(nomepIndex), c.getFloat(prezzoIndex), c.getString(nomecIndex));
         return product;
+    }
+
+    public String getBusinessName() {
+        String s;
+        Cursor c  = db.rawQuery("SELECT * FROM business", null);
+        int nomebIndex = c.getColumnIndex("nomeb");
+        c.moveToFirst();
+        s = c.getString(nomebIndex);
+        return s;
+    }
+
+    public String getBusinessAddress() {
+        String s;
+        Cursor c  = db.rawQuery("SELECT * FROM business", null);
+        int addressIndex = c.getColumnIndex("address");
+        c.moveToFirst();
+        s = c.getString(addressIndex);
+        return s;
+    }
+
+    public void setBusiness(String name, String VATnumber, String address) {
+        db.execSQL("DELETE FROM business");
+        ContentValues cv = new ContentValues();
+        cv.put("nomeb" , name.toUpperCase());
+        cv.put("address", address.toUpperCase());
+        cv.put("VATn", VATnumber);
+        db.insert(BUSINESS, null, cv);
     }
 
     public List<Product> viewAllProducts() {
@@ -209,42 +237,22 @@ public class DBManager {
     public void addOrder(Order order) {
         ContentValues cv = new ContentValues();
         cv.put(ORDINE_TOTALE, order.total);
-        int id =(int) db.insert(ORDINE, null, cv);
-        System.out.println("Id: " + id);
-        ContentValues cv2 = new ContentValues();
-        for (int i = 0; i < order.list.size(); i++) {
-            cv2.put(DI_IDO, id);
-            cv2.put(DI_IDP, order.list.get(i).id);
-            db.insert(DI, null, cv2);
-        }
-
+        cv.put(ORDINE_DATA, order.mydate);
+        db.insert(ORDINE, null, cv);
     }
 
     public List<Order> viewAllOrder() {
         List<Order> orderList = new ArrayList<Order>();
-        Cursor c = db.rawQuery("SELECT * FROM ordine INNER JOIN di ON ordine.ido = di.ido", null);
+        Cursor c = db.rawQuery("SELECT * FROM ordine ", null);
         int idoIndex = c.getColumnIndex("ido");
         int totIndex = c.getColumnIndex("totale");
-        int idIndex = c.getColumnIndex("id");
-        int idpIndex = c.getColumnIndex("idp");
-        Product p;
-        Order o = new Order();
+        int dataIndex = c.getColumnIndex("datetime");
+        Order o;
         if(c.moveToFirst()) {
-            int id_current_order = c.getInt(idoIndex);
-
             do {
-
-                if(c.getInt(idoIndex) == id_current_order) {
-                    p = searchProductById(c.getInt(idpIndex));
-                    o.add(p);
-                }
-                else {
-                    id_current_order = c.getInt(idoIndex);
-                    orderList.add(o);
-                    o  = new Order();
-                }
+                o = new Order(c.getInt(idoIndex), (double)c.getFloat(totIndex), c.getString(dataIndex));
+                orderList.add(o);
             }while (c.moveToNext());
-
         }
         return orderList;
     }

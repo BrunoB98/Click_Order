@@ -3,6 +3,7 @@ package com.example.oopproject;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.oopproject.Database.DBManager;
@@ -20,14 +21,18 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.example.oopproject.NewOrder.ProductListActivity;
+import com.example.oopproject.RegisterOrder.HistoryOrder;
+import com.example.oopproject.Settings.BusinessFragment;
 import com.example.oopproject.Settings.SettingsActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 import java.net.Inet4Address;
 import java.util.ArrayList;
@@ -54,10 +59,11 @@ public class MainActivity extends AppCompatProject
         dbManager.open();
         dbManager.update();
         COUNT = ITEMS.size();
-        List<Order> order_history;
-        order_history = new ArrayList<>(dbManager.viewAllOrder());
-        System.out.println(order_history.toString());
-
+        View headerView = navigationView.getHeaderView(0);
+        TextView name = (TextView) headerView.findViewById(R.id.textView2);
+        TextView address = (TextView) headerView.findViewById(R.id.textView);
+        name.setText(dbManager.getBusinessName());
+        address.setText(dbManager.getBusinessAddress());
     }
 
     @Override
@@ -68,13 +74,6 @@ public class MainActivity extends AppCompatProject
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override
@@ -92,16 +91,12 @@ public class MainActivity extends AppCompatProject
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_history) {
+            startActivity(new Intent(this, HistoryOrder.class));
         } else if (id == R.id.nav_view) {
 
         } else if (id == R.id.action_settings) {
@@ -128,12 +123,7 @@ public class MainActivity extends AppCompatProject
                         alertDialog.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                startActivity(new Intent(getApplicationContext(), ManageProducts.class));
                             }
-                        });
-                        alertDialog.setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {}
                         });
                         alertDialog.show();
                         return;

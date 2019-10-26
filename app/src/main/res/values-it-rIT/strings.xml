@@ -77,6 +77,7 @@
     <string name="order_registered">Ordine registrato</string>
     <string name="alert_product_empty">Devi inserire il nome del prodotto e il prezzo per aggiungerlo.</string>
     <string name="alert_categories_empty">Devi inserire almeno una categoria per aggiungere un prodotto.</string>
+    <string name="delete_all">Database cancellato</string>
 
 
 </resources>

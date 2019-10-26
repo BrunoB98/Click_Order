@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.oopproject.AppCompatProjectOrder;
 import com.example.oopproject.Dummy.*;
+import com.example.oopproject.MainActivity;
 import com.example.oopproject.R;
 
 import java.util.ArrayList;
@@ -65,6 +66,27 @@ public class ProductListActivity extends AppCompatProjectOrder {
         recyclerView = findViewById(R.id.product_list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
+    }
+
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialog;
+        alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle(R.string.attention);
+        alertDialog.setMessage(R.string.conf_delete_ord);
+        alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+        alertDialog.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), R.string.order_canceled, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                order.clear();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {}
+        });
+        alertDialog.show();
     }
 
     public void goSearch(View view) {

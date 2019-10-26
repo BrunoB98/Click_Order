@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String ORDINE_NPERSONE = "npersone";
     static final String ORDINE_TOTALE = "totale";
     static final String CATEGORIA_NOME = "nomec";
-
+    static final String BUSINESS = "business";
     static final String DBNAME= "TestDB";
     static final String ORDINE = "ordine";
     static final String PRODOTTO = "prodotto";
@@ -42,6 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String DB_CONTIENE = "CREATE TABLE IF NOT EXISTS contiene (nomei varchar(50), idp integer, foreign key (nomei) references ingrediente, foreign key (idp) references prodotto, primary key (nomei, idp));";
     static final String DB_DI = "CREATE TABLE IF NOT EXISTS di (id integer primary key autoincrement, ido integer, idp integer, foreign key (ido) references ordine, foreign key (idp) references prodotto );";
     static final String DB_CATEGORIA = "CREATE TABLE IF NOT EXISTS categoria (nomec varchar(50) primary key );";
+    static final String DB_BUSINESS = "CREATE TABLE IF NOT EXISTS business (nomeb varchar(50) primary key, address varchar(50), VATn varchar(11) );";
 
 
     public DatabaseHelper(Context context) {
@@ -59,10 +60,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(DB_ORDINE);
             db.execSQL(DB_PRODOTTO);
             db.execSQL(DB_DI);
+            db.execSQL(DB_BUSINESS);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        ContentValues cv = new ContentValues();
+        cv.put("nomeb" , "Insert business name");
+        cv.put("address", "Insert address name");
+        cv.put("VATn", "Insert VATnumber");
+        db.insert(BUSINESS, null, cv);
     }
 
     @Override
