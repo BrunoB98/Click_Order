@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OOPproject</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -57,12 +58,12 @@
     <string name="complete_order">Order successfully completed! The order history is updated.</string>
     <string name="error_db">You can\'t continue if you don\'t add almost a product.</string>
     <string name="error">Error</string>
+    <string name="conf_delete_ord">The current order will be canceled. Are you sure to continue?</string>
+    <string name="cancel_order">CANCEL ORDER</string>
+    <string name="order_canceled">Order canceled</string>
+    <string name="order_registered">Order registered</string>
     <string name="alert_product_empty">You must insert the product name and the product price to add the product.</string>
     <string name="alert_categories_empty">You must insert almost one category to add a product.</string>
-
-
-
-
 
 
 
