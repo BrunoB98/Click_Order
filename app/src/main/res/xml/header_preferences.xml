@@ -23,11 +23,6 @@
         app:key="reset_header"
         app:title="@string/reset" />
     <Preference
-        app:fragment="com.example.oopproject.Settings.StyleFragment"
-        app:icon="@android:drawable/btn_star_big_on"
-        app:key="style_header"
-        app:title="@string/Style" />
-    <Preference
         app:fragment="com.example.oopproject.Settings.BusinessFragment"
         app:icon="@drawable/business_info"
         app:key="about_business_header"
