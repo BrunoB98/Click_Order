@@ -12,6 +12,8 @@ import com.example.oopproject.Dummy.Order;
 import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.R;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import static com.example.oopproject.AppCompatProject.dbManager;
@@ -19,7 +21,7 @@ import static com.example.oopproject.AppCompatProject.dbManager;
 public class SimpleAdapterHistoryOrder extends RecyclerView.Adapter<SimpleAdapterHistoryOrder.ViewHolder> {
 
     private List<Order> mValues;
-
+    DecimalFormat df = new DecimalFormat("##.##");
 
     SimpleAdapterHistoryOrder(List<Order> items) {
         mValues = items;
@@ -36,10 +38,10 @@ public class SimpleAdapterHistoryOrder extends RecyclerView.Adapter<SimpleAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Order o = mValues.get(position);
         o.printOrder();
-        System.out.println("Ciao sono l'ordine: " + position + " ecco i dati : " + o.getId() + o.getMydate() + o.getTotal().toString());
+
         holder.id_order.setText(Integer.toString(o.getId()));
         holder.date_order.setText(o.getMydate());
-        holder.total_order.setText(o.getTotal().toString() + "$");
+        holder.total_order.setText(df.format(o.getTotal()) + " €");
     }
 
     @Override

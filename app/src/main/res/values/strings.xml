@@ -53,7 +53,7 @@
     <string name="confirm">CONFIRM</string>
     <string name="search_prod">Type to search products...</string>
     <string name="delete_prod">DELETE</string>
-    <string name="prod_removed">PRODUCT REMOVED</string>
+    <string name="prod_removed">PRODUCT DELETED</string>
     <string name="alert_reset">You are deleting all the records in the database. Continue?</string>
     <string name="complete_order">Order successfully completed! The order history is updated.</string>
     <string name="error_db">You can\'t continue if you don\'t add almost a product.</string>
@@ -65,6 +65,16 @@
     <string name="alert_product_empty">You must insert the product name and the product price to add the product.</string>
     <string name="alert_categories_empty">You must insert almost one category to add a product.</string>
     <string name="delete_all">Database deleted</string>
+    <string name="category_added">CATEGORY ADDED </string>
+    <string name="pres_cat">Current categories and number of products:</string>
+    <string name="prod_added">PRODUCT ADDED</string>
+    <string name="str_ok">With:</string>
+    <string name="str_no">Without:</string>
+    <string name="added_to">Added to order</string>
+    <string name="removed_to">Removed from order</string>
+
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

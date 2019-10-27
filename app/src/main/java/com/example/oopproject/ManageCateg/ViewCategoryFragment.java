@@ -22,7 +22,8 @@ public class ViewCategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_view_category, container, false);
-        String string = "Categoria presenti e numero di prodotti presenti: \n\n";
+        String pres = view.getContext().getString(R.string.pres_cat);
+        String string = pres + " \n\n";
         for(String s : dbManager.viewCategory()) {
             string += s + "\r (" + dbManager.viewProducts(s).size() + ")\n\n";
         }

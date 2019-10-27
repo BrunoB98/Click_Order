@@ -7,6 +7,11 @@
     android:fitsSystemWindows="true"
     tools:context=".NewOrder.ProductListActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:orientation="vertical"
@@ -14,37 +19,28 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spin_categ"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/go_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.85"
-                android:onClick="goSearch"
-                app:srcCompat="@android:drawable/ic_search_category_default" />
-        </LinearLayout>
+                <Spinner
+                    android:id="@+id/spin_categ"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.15"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ABE2B2"
-            android:onClick="ShowOrder"
-            android:shadowColor="@color/colorPrimaryDark"
-            android:text="@string/order_summary"
-            android:textColor="@android:color/black" />
+                <ImageButton
+                    android:id="@+id/go_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.85"
+                    android:onClick="goSearch"
+                    app:srcCompat="@android:drawable/ic_search_category_default" />
+            </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -52,15 +48,26 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
+
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <include layout="@layout/product_list" />
-
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:textSize="20dp" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="#99E770"
+            android:onClick="ShowOrder"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:text="@string/order_summary"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            app:layout_anchorGravity="center" />
+    </LinearLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

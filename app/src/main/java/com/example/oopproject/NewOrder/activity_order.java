@@ -12,9 +12,13 @@ import android.widget.TextView;
 import com.example.oopproject.AppCompatProjectOrder;
 import com.example.oopproject.R;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class activity_order extends AppCompatProjectOrder {
 
     View recyclerView;
+    DecimalFormat df = new DecimalFormat("##.##");
     protected static Adapter adapter;
     protected static TextView tot;
     @Override
@@ -22,7 +26,7 @@ public class activity_order extends AppCompatProjectOrder {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         tot = findViewById(R.id.total);
-        tot.setText(order.total.toString() + " $");
+        tot.setText(df.format(order.total)+ " €");
         recyclerView = findViewById(R.id.summary_order);
         assert recyclerView != null;
         adapter = new SimpleItemRecyclerViewAdapter2(order.list);

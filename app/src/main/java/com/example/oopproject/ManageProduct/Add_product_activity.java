@@ -25,6 +25,7 @@ public class Add_product_activity extends AppCompatProject {
     AlertDialog.Builder alertDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,7 @@ public class Add_product_activity extends AppCompatProject {
                     dbManager.addContiene(name.getText().toString(), ing.get(i).getText().toString());
                 }
             }
-            Toast.makeText(getApplicationContext(), "Product added to database", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.prod_added, Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ManageProducts.class));
         }
     }

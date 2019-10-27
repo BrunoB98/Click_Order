@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.oopproject.R;
+import com.google.android.material.tabs.TabLayout;
 
 import static com.example.oopproject.AppCompatProject.dbManager;
 
@@ -36,6 +37,7 @@ public class AddCategoryFragment extends Fragment {
                 if(!category_name.getText().toString().isEmpty()) {
                     dbManager.addCategory(category_name.getText().toString());
                     category_name.setText("");
+                    Toast.makeText(getContext(), R.string.category_added, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -121,7 +121,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
             public void onClick(View view) {
                 Product product = new Product(l.get((int)view.getTag()));
                 order.add(product);
-                Toast.makeText(view.getContext(), "Added to order", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), R.string.added_to, Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -174,7 +174,7 @@ public class ProductListActivity extends AppCompatProjectOrder {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             final Product p = mValues.get(position);
             holder.mContentView.setText(p.getName());
-            holder.mPriceView.setText(p.getPrice().toString() + "$");
+            holder.mPriceView.setText(p.getPrice().toString() + " €");
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
             holder.bt_add.setTag(position);

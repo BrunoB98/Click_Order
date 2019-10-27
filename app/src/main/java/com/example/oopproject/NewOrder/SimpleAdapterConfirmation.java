@@ -1,7 +1,9 @@
 package com.example.oopproject.NewOrder;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.oopproject.Dummy.Product;
 import com.example.oopproject.R;
 
+import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import android.content.Context.*;
 import static com.example.oopproject.AppCompatProject.dbManager;
 import static com.example.oopproject.AppCompatProjectOrder.order;
 import static com.example.oopproject.NewOrder.activity_order.adapter;
@@ -44,19 +48,18 @@ public class SimpleAdapterConfirmation extends RecyclerView.Adapter<SimpleAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Product p = mValues.get(position);
         holder.mContentView.setText(p.getName());
-        holder.mPriceView.setText(p.getPrice().toString() + "$");
+        holder.mPriceView.setText(p.getPrice().toString() + "€");
         holder.itemView.setTag(mValues.get(position));
-        String strOK = "Ingredienti presenti: ", strNO = "Senza: ";
         List<String> list = dbManager.viewProductDetails(p);
         for(int i = 0; i < p.ingredients.size(); i++ ) {
             if (p.checked[i] == true) {
-                strOK = strOK + list.get(i) + ", ";
+                holder.s_ok = holder.s_ok + list.get(i) + ", ";
             }
             else {
-                strNO = strNO + list.get(i) +  ", ";
+                holder.s_no = holder.s_no + list.get(i) +  ", ";
             }
         }
-        holder.modification.setText(strOK + '\n' + strNO);
+        holder.modification.setText(holder.s_ok + '\n' + holder.s_no);
     }
 
     @Override
@@ -68,6 +71,8 @@ public class SimpleAdapterConfirmation extends RecyclerView.Adapter<SimpleAdapte
         final TextView mContentView;
         final TextView mPriceView;
         final TextView modification;
+        String s_no, s_ok;
+
 
 
         ViewHolder(View view) {
@@ -75,6 +80,9 @@ public class SimpleAdapterConfirmation extends RecyclerView.Adapter<SimpleAdapte
             mContentView = (TextView) view.findViewById(R.id.confirm_pname);
             mPriceView = (TextView) view.findViewById(R.id.confirm_pprice);
             modification = (TextView) view.findViewById(R.id.modification);
+            s_ok = view.getContext().getString(R.string.str_ok);
+            s_no = view.getContext().getString(R.string.str_no);
+
         }
 
     }

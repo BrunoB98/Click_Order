@@ -82,7 +82,7 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
             order.remove(order.list.get((int)view.getTag()));
             adapter.notifyDataSetChanged();
             tot.setText(order.total.toString() + " $");
-            Toast.makeText(view.getContext(), "Removed to order", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), R.string.removed_to, Toast.LENGTH_SHORT).show();
         }
     };
 

@@ -30,9 +30,6 @@ public class HistoryOrder extends AppCompatProject {
         adapter = new SimpleAdapterHistoryOrder(dbManager.viewAllOrder());
         setupRecyclerView((RecyclerView) rw_history);
 
-
-
-        System.out.println("Ciao sono l'activity Hisotry Order");
     }
 
     /* Funzione per settare un nuovo Adapter utile per visualizzare gli elementi */

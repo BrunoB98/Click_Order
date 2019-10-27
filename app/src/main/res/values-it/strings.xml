@@ -65,7 +65,7 @@
     <string name="confirm">CONFERMA</string>
     <string name="search_prod">Cerca i prodotti...</string>
     <string name="delete_prod">ELIMINA</string>
-    <string name="prod_removed">PRODOTTO RIMOSSO</string>
+    <string name="prod_removed">PRODOTTO ELIMINATO</string>
     <string name="alert_reset">Stai cancellando tutti i record presenti nel database. Proseguire?</string>
     <string name="complete_order">Ordine completato con successo! La cronologia ordini è stata aggiornata.</string>
     <string name="pay_now">PAGA</string>
@@ -78,6 +78,13 @@
     <string name="alert_product_empty">Devi inserire il nome del prodotto e il prezzo per aggiungerlo.</string>
     <string name="alert_categories_empty">Devi inserire almeno una categoria per aggiungere un prodotto.</string>
     <string name="delete_all">Database cancellato</string>
+    <string name="category_added">AGGIUNTA CATEGORIA</string>
+    <string name="pres_cat">Categorie presenti e numero di prodotti:</string>
+    <string name="prod_added">PRODOTTO AGGIUNTO</string>
+    <string name="str_no">Senza:</string>
+    <string name="str_ok">Con:</string>
+    <string name="added_to">Aggiunto all\'ordine</string>
+    <string name="removed_to">Rimosso dall\'ordine</string>
 
 
 </resources>
