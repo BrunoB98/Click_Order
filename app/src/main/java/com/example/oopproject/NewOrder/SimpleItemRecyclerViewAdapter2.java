@@ -37,7 +37,6 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
         public void onClick(View v) {
             final View vi = v;
             final Product p2 = order.list.get((int)vi.getTag());
-            System.out.println("Questo è il prodotto: " + p2.toString());
             final boolean[] check = new boolean[p2.ingredients.size()];
             final String[] str = new String[p2.ingredients.size()];
 
@@ -65,7 +64,7 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
                         }
                 }
             });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                 }
@@ -81,7 +80,7 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
         public void onClick(View view) {
             order.remove(order.list.get((int)view.getTag()));
             adapter.notifyDataSetChanged();
-            tot.setText(order.total.toString() + " $");
+            tot.setText(order.total.toString() + " €");
             Toast.makeText(view.getContext(), R.string.removed_to, Toast.LENGTH_SHORT).show();
         }
     };
@@ -99,7 +98,7 @@ public class SimpleItemRecyclerViewAdapter2 extends RecyclerView.Adapter<SimpleI
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Product p = mValues.get(position);
         holder.mContentView.setText(p.getName());
-        holder.mPriceView.setText(p.getPrice().toString() + "$");
+        holder.mPriceView.setText(p.getPrice().toString() + "€");
         holder.itemView.setTag(mValues.get(position));
         holder.bt.setTag(position);
         holder.bt.setOnClickListener(remove);
