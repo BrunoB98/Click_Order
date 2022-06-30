@@ -1,5 +1,5 @@
 # Click_Order
-Click&Order is a university project developed in 2018. It is an Android application that could be useful to take orders in a restaurant, bar or similar.
+Click&Order is a university project developed in 2019. It is an Android application that could be useful to take orders in a restaurant, bar or similar.
 Click&Order used a local database to store all products and their categories and it allows to generate and modify an order.
 Take a look!
 
